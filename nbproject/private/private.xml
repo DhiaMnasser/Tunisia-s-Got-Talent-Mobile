@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Services/Achat/ServicePanier.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/gui/Stock/Store/StoreForm.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Services/Achat/LigneCommandeService.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/gui/Achat/PanierFrom.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/gui/Achat/CheckoutForm.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Entities/Achat/LigneCommande2.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/gui/Achat/LigneCommandeForm.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Services/Achat/CommandeService.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/gui/Achat/PanForm.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Entities/Achat/StripePayment.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Entities/Achat/Commande.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Entities/Achat/Panier.java</file>
+            <file>file:/D:/Mobile/TGTtest/TGTMobile/src/com/mycompany/myapp/Entities/Achat/LigneCommande.java</file>
+        </group>
+    </open-files>
+</project-private>
