@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="GUI 1" cloudDestinationProperty="GUI 1" layout="BoxLayout" boxLayoutAxis="Y" >
+  <component type="TextField" name="TextField" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="3A20" >
+  </component>
+  <component type="Label" name="Label" cloudDestinationProperty="Label" text="Hello 3A 20" >
+  </component>
+  <component type="Button" name="Button" cloudDestinationProperty="Button" text="Valider" >
+  </component>
+</component>
