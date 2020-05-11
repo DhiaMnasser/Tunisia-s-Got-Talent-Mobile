@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Stock.Services;
+package com.mycompany.myapp.Services.Stock;
 
-import Stock.Entities.Categorie;
-import Stock.Entities.Produit;
-import Stock.Utils.Statics;
+import com.mycompany.myapp.Entities.Stock.Categorie;
+import com.mycompany.myapp.Entities.Stock.Produit;
+import com.mycompany.myapp.Utils.Statics;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;

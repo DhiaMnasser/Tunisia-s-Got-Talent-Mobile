@@ -1,8 +1,8 @@
 package com.mycompany.myapp;
 
 
-import Stock.Gui.HomeForm;
-import Stock.Gui.ListProductForm;
+import com.mycompany.myapp.gui.Stock.HomeForm;
+import com.mycompany.myapp.gui.Stock.ListProductForm;
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;

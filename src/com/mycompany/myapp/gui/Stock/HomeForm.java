@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Stock.Gui;
+package com.mycompany.myapp.gui.Stock;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
@@ -24,7 +24,7 @@ Form current;
         add(new Label("Choose an option"));
         Button btnAddProduct=new Button("Add");
         Button btnListProduct=new Button("liste des produits");
-         btnAddProduct.addActionListener(e-> new AddProductForm(current).show());
+        btnAddProduct.addActionListener(e-> new AddProductForm(current).show());
         btnListProduct.addActionListener(e-> new ListProductForm(current).show());
         addAll(btnAddProduct,btnListProduct);
      

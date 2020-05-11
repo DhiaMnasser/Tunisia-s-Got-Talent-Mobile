@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Stock.Services;
+package com.mycompany.myapp.Services.Stock;
 
-import Stock.Entities.Produit;
-import Stock.Utils.Statics;
+import com.mycompany.myapp.Entities.Stock.Produit;
+import com.mycompany.myapp.Utils.Statics;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
@@ -57,24 +57,24 @@ req.addResponseListener(new ActionListener<NetworkEvent>(){
  
         try {
             products=new ArrayList<>();
-  JSONParser j=new JSONParser();
-  Map<String,Object> productsListJson;
+            JSONParser j=new JSONParser();
+            Map<String,Object> productsListJson;
         
-            productsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+             productsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
              List <Map<String,Object>> list=(List<Map<String,Object>>)productsListJson.get("root");
-for (Map<String,Object> obj:list){
+ for (Map<String,Object> obj:list){
     
  Produit p=new Produit();
  float id=Float.parseFloat(obj.get("id").toString());
  p.setId_Produit((int) id);
  p.setNom_Produit(obj.get("Name_Product").toString());
-p.setTaille_Produit(obj.get("Taille_Produit").toString());
-p.setEtat_Produit(obj.get("Etat_Produit").toString());
-p.setId_Categorie(((int)Float.parseFloat(obj.get("Id_Categorie").toString())));
-p.setPrix_Produit(((int)Float.parseFloat(obj.get("Price_Product").toString())));
-p.setQuantite_Totale(((int)Float.parseFloat(obj.get("Quantity_Tota").toString())));
-p.setUrl(obj.get("URL").toString());
-products.add(p);
+ p.setTaille_Produit(obj.get("Taille_Produit").toString());
+ p.setEtat_Produit(obj.get("Etat_Produit").toString());
+ p.setId_Categorie(((int)Float.parseFloat(obj.get("Id_Categorie").toString())));
+ p.setPrix_Produit(((int)Float.parseFloat(obj.get("Price_Product").toString())));
+ p.setQuantite_Totale(((int)Float.parseFloat(obj.get("Quantity_Tota").toString())));
+ p.setUrl(obj.get("URL").toString());
+ products.add(p);
 
 }
         } catch (IOException ex) {
@@ -82,7 +82,7 @@ products.add(p);
   return products;
 }
 public ArrayList<Produit> getAllProducts(){
-String url=Statics.BASE_URL+"/TGTMobile/ListeProductsall";
+String url=Statics.BASE_URL+"/TGTMobile/ListeProduct";
 req.setUrl(url);
 req.setPost(false);
 req.addResponseListener(new ActionListener<NetworkEvent>(){

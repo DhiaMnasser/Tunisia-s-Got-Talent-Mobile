@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Stock.Gui;
+package com.mycompany.myapp.gui.Stock;
 
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import Stock.Services.ServiceProduct;
-import Stock.Entities.Produit;
-import Stock.Utils.Statics;
+import com.mycompany.myapp.Services.Stock.ServiceProduct;
+import com.mycompany.myapp.Entities.Stock.Produit;
+import com.mycompany.myapp.Utils.Statics;
 
 /**
  *

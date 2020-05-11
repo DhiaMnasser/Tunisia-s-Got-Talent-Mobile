@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Stock.Gui;
+package com.mycompany.myapp.gui.Stock;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
@@ -13,9 +13,9 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import Stock.Services.ServiceProduct;
-import Stock.Entities.Produit;
-import Stock.Utils.Statics;
+import com.mycompany.myapp.Services.Stock.ServiceProduct;
+import com.mycompany.myapp.Entities.Stock.Produit;
+import com.mycompany.myapp.Utils.Statics;
 /**
  *
  * @author Haddad

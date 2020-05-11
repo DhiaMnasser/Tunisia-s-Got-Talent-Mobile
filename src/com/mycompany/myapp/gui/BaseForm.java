@@ -20,7 +20,7 @@
 package com.mycompany.myapp.gui;
 
 
-import Stock.Gui.ListProductForm;
+import com.mycompany.myapp.gui.Stock.ListProductForm;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Component;
 import com.codename1.ui.Display;
