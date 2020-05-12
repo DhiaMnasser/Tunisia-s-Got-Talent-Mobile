@@ -55,8 +55,23 @@ public class AfficherEvent {
          }
      });
         
-        
-          f.getToolbar().addCommandToSideMenu("Events", null, new ActionListener() {
+         f = new Form();
+         f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
+             @Override
+            public void actionPerformed(ActionEvent evt) {
+          EvenementForm events = new EvenementForm();
+           events.getF().show();
+            }
+        });
+          
+          f.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                EvenementForm events = new EvenementForm();
+                events.getF().show();
+            }
+        });
+          f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
           EvenementForm events = new EvenementForm();
@@ -65,7 +80,7 @@ public class AfficherEvent {
         });
           
             
-        f = new Form();
+       
         f.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
             EvenementForm sb = new EvenementForm();
             sb.getF().show();
@@ -119,13 +134,14 @@ public class AfficherEvent {
         c3.add(new Label(formatter2.format(e.getDate_f())));
         //Duree
         Container c5 = new Container(BoxLayout.x());
-        final FontImage duree = FontImage.createMaterial(FontImage.MATERIAL_ROOM, "Label", 6);
+        final FontImage duree = FontImage.createMaterial(FontImage.MATERIAL_ALARM, "Label", 6);
         c5.add(duree);
         c5.add(new Label("Duree : "));
         c5.add(new Label(e.getDuree()));
+        c5.add(new Label("Jours"));
         //Gagnant
         Container c6 = new Container(BoxLayout.x());
-        final FontImage gagnant = FontImage.createMaterial(FontImage.MATERIAL_ROOM, "Label", 6);
+        final FontImage gagnant = FontImage.createMaterial(FontImage.MATERIAL_PERSON, "Label", 6);
         c6.add(gagnant);
         c6.add(new Label("Gagnant : "));
         c6.add(new Label(e.getGagnant()));
@@ -134,7 +150,7 @@ public class AfficherEvent {
         //maxparticipants
         Container c7 = new Container(BoxLayout.x());
        
- final FontImage part = FontImage.createMaterial(FontImage.MATERIAL_ATTACH_MONEY, "Label", 6);
+ final FontImage part = FontImage.createMaterial(FontImage.MATERIAL_PERSON, "Label", 6);
         c7.add(part);
         c7.add(new Label("Max Participants : "));
         int maxpart = e.getMaxParticipants();
@@ -149,7 +165,7 @@ public class AfficherEvent {
         c8.add(new Label("Etat : "));
         int etati = e.getEtat();
         String s2 = Integer.toString(etati);
-        c8.add(new Label(s2));
+        
         if (etati==0)
         {
         c8.add(new Label("Terminé")); 
@@ -161,7 +177,7 @@ public class AfficherEvent {
         //region
         Container c9 = new Container(BoxLayout.x());
        
- final FontImage region = FontImage.createMaterial(FontImage.MATERIAL_ATTACH_MONEY, "Label", 6);
+ final FontImage region = FontImage.createMaterial(FontImage.MATERIAL_PLACE, "Label", 6);
         c9.add(region);
         c9.add(new Label("Region : "));
         int reg = e.getRegion_id();

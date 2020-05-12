@@ -27,6 +27,9 @@ public class Region {
 
     public Region() {
     }
+    public Region(int id) {
+        this.id=id;
+    }
 
     public Region(int id, String Nom, int Nb_villes) {
         this.id = id;

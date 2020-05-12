@@ -5,10 +5,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/EvenementForm.java</file>
-            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/ListTasksForm.java</file>
-            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/NewsfeedForm.java</file>
-            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/com/mycompany/myapp/MyApplication.java</file>
-            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/Services/EvenementService.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/AfficherEvent.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/HomeForm.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/Entities/Evenement.java</file>
         </group>
     </open-files>
 </project-private>
