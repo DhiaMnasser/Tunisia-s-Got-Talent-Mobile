@@ -274,9 +274,79 @@ c0.add(c2);
             sb.show();
         });
     
-        TextField search = new TextField("","Rechercher");
+        TextField search = new TextField("","Rechercher un Evénément");
         FloatingActionButton searchbtn = FloatingActionButton.createFAB(FontImage.MATERIAL_SEARCH);
+       f.addAll(search,searchbtn);
+        searchbtn.addActionListener((e)->
+       {
+           Form test = new Form ("Evénement recherché "+search.getText() , BoxLayout.y());
+            test.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                EvenementForm events = new EvenementForm();
+                events.getF().show();
+            }
+        });
+            f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                RegionForm events = new RegionForm();
+                events.getF().show();
+            }
+        });
+            test.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
+            EvenementForm sb = new EvenementForm();
+            sb.show();
+        });
+            int i = 0 ;
+            ///// fonction rechercher
+            for (Evenement c : EvenementService.getInstance().getthevent(search.getText())) 
+            {
+                i++ ;
+                Container c0 = new Container(BoxLayout.y());
+                
+                //NOM
+        Container c4 = new Container(BoxLayout.x());
+        final FontImage nom = FontImage.createMaterial(FontImage.MATERIAL_ROOM, "Label", 6);
+        c4.add(nom);
+        c4.add(new Label("Lieu : "));
+        c4.add(new Label(c.getNomevent()));
+
+              //IMAGE 
+        Image imgUrl;
+        Image placeholder = Image.createImage(600, 600);
+        EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
+        imgUrl = URLImage.createToStorage(encImage, c.getImage(), c.getImage());
+        ImageViewer img1 = new ImageViewer(imgUrl);
+        //bouton
+        Container c10 = new Container(BoxLayout.x());
+Button b = new Button("Afficher Evénement"); 
+           
+b.addPointerPressedListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+AfficherEvent ev = new AfficherEvent(c);
+                    ev.getF().show();
+            
+            }  });
        
+           c10.add(b);
+           
+        c0.add(img1);
+        c0.add(c4);
+        c0.add(c10);
+        test.add(c0);
+            }
+            if (i==0)
+            {
+                 Dialog.show(":(((","Aucun résultat n'a été trouvé", "ok", "cancel");
+            }
+            else {
+            Label res = new Label(i+" Résultat(s) trouvé(s)");
+            test.add(res);
+           test.show();
+            }
+       });
         System.out.println("test");
         //RECHERCHE
         

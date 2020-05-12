@@ -134,5 +134,22 @@ public class EvenementService {
         }
         return events;
     }
-    
+    public ArrayList<Evenement> getthevent(String c) {
+                
+
+          String url =Statics.BASE_URL+"api/search/"+c;
+        req.setUrl(url);
+        req.setPost(false);
+        req.setHttpMethod("GET");
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                events = parseEvents(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return events;
+    }
 }
