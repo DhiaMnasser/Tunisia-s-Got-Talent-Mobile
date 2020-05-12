@@ -3,102 +3,80 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
 import Entities.Evenement;
 import Services.EvenementService;
-import com.codename1.components.FloatingActionButton;
 import com.codename1.components.ImageViewer;
-import com.codename1.components.ScaleImageLabel;
-import com.codename1.components.SpanLabel;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
-import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Command;
-import com.codename1.ui.Component;
-import static com.codename1.ui.Component.BOTTOM;
-import static com.codename1.ui.Component.CENTER;
-import static com.codename1.ui.Component.RIGHT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
-import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
-import com.codename1.ui.Font;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import com.codename1.ui.Graphics;
-import com.codename1.ui.IconHolder;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
-import com.codename1.ui.RadioButton;
-import com.codename1.ui.Tabs;
-import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.geom.Dimension;
-import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.layouts.FlowLayout;
-import com.codename1.ui.layouts.LayeredLayout;
-import com.codename1.ui.plaf.Style;
-import com.codename1.ui.plaf.UIManager;
-import com.codename1.ui.util.Resources;
-
-
-import gui.*;
-import java.util.ArrayList;
-import javafx.scene.paint.Color;
 /**
  *
  * @author Achraf
  */
-public class EvenementForm extends Form{
-   Evenement e = new Evenement();
-Form f;
-private Resources theme;
-public EvenementForm() {
-    //f = new Form();
-f = this ;
-        EvenementService es = new EvenementService();
-        ArrayList<Evenement> listevents = new ArrayList<>();
-        listevents = es.getAllevents();
-         f.setTitle("Evenements");
+public class AfficherEvent {
+     Form f;
+    int eventid;
+   Evenement e = new Evenement(eventid);
+    int user_id;
 
-        f.setLayout(BoxLayout.y());
+    //int SelectedID;
+    public AfficherEvent(Evenement event) {
+        f = new Form();
+
+
+        this.e = event;
+        
+        
+             
+        f.setTitle("Evénement détails");
+
+        f.setLayout(BoxLayout.y());    
+         
+        Toolbar.setGlobalToolbar(true);
         f.getToolbar().addCommandToOverflowMenu("Logout", null, new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                //new HomeForm().show();
-                new SignInForm(theme).show();
+         @Override
+         public void actionPerformed(ActionEvent evt) {
+                          new HomeForm().show();
 
+         }
+     });
+        
+        
+          f.getToolbar().addCommandToSideMenu("Events", null, new ActionListener() {
+             @Override
+            public void actionPerformed(ActionEvent evt) {
+          EvenementForm events = new EvenementForm();
+           events.getF().show();
             }
         });
-         f.getToolbar().addCommandToSideMenu("Evenements", null, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                EvenementForm events = new EvenementForm();
-                events.getF().show();
-            }
+          
+            
+        f = new Form();
+        f.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
+            EvenementForm sb = new EvenementForm();
+            sb.getF().show();
         });
-         f.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
-            HomeForm sb = new HomeForm();
-            sb.show();
-        });
-    
-        TextField search = new TextField("","Rechercher");
-        FloatingActionButton searchbtn = FloatingActionButton.createFAB(FontImage.MATERIAL_SEARCH);
-       
-        System.out.println("test");
-        //RECHERCHE
-        
-        // LISTE
-        
-        for (Evenement e : listevents) {
 
-           Container c0 = new Container(BoxLayout.y());
+       Evenement ev = new Evenement(e.getId());
+        EvenementService es = new EvenementService();
+
+        ev = es.geteventbyid(event, e.getId());
+
+         Container c0 = new Container(BoxLayout.y());
   
 
         Container c = new Container(BoxLayout.x());
@@ -192,13 +170,12 @@ f = this ;
         
         //
            Container c10 = new Container(BoxLayout.x());
-Button b = new Button("Afficher Evénement"); 
+Button b = new Button("S'inscrire à l'Evénement"); 
            
 b.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-AfficherEvent ev = new AfficherEvent(e);
-                    ev.getF().show();
+
             
             }  });
        
@@ -220,15 +197,8 @@ c0.add(c2);
        
                 
        f.add(c0);
-            
-
-        }
-        
-        
-        
-        
-}
-public Form getF() {
+    }
+    public Form getF() {
         return f;
     }
 
@@ -236,4 +206,3 @@ public Form getF() {
         this.f = f;
     }
 }
-

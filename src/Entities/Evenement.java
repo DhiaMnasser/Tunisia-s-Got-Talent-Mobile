@@ -90,6 +90,10 @@ public Evenement (String nomevent,String Duree, String Gagnant, String image, Da
         this.image = image;
     }
 
+    public Evenement(int id) {
+        this.id=id;
+    }
+
     
 
     public int getRegion_id() {
