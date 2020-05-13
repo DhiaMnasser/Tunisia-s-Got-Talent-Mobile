@@ -5,8 +5,10 @@
  */
 package gui;
 import Entities.Evenement;
+import Entities.User;
 import Services.EvenementService;
 import com.codename1.components.ImageViewer;
+import com.codename1.components.SpanLabel;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
@@ -22,6 +24,7 @@ import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import java.util.ArrayList;
 /**
  *
  * @author Achraf
@@ -31,7 +34,8 @@ public class AfficherEvent {
     int eventid;
    Evenement e = new Evenement(eventid);
     int user_id;
-
+Container c11 ;
+Label s ;
     //int SelectedID;
     public AfficherEvent(Evenement event) {
         f = new Form();
@@ -196,16 +200,43 @@ b.addPointerPressedListener(new ActionListener() {
             }  });
        
            c10.add(b);
+           c0.addAll(c2,c3,c4,c5,c6,c7,c8,c9);
+// liste des participants 
+int nbr =0 ;
+ c11 = new Container(BoxLayout.x());
 
-           
+        final FontImage liste = FontImage.createMaterial(FontImage.MATERIAL_PERSON, "Label", 6);
+        c11.add(liste);
+        c11.add(new Label("Participants : "));
         
         
-                 
+EvenementService es3 = new EvenementService();
+        ArrayList<User> listevents3 = new ArrayList<>();
+        listevents3 = es3.getusers();
+                for (User u : listevents3) {
+                    System.out.println(u.getName());
        
+        
+               if (e.getId()==u.getEvent_id()){
+                 
+        /*c11 = new Container(BoxLayout.x());
 
-c0.addAll(c2,c3,c4,c5,c6,c7,c8,c9,c10);
+        final FontImage liste = FontImage.createMaterial(FontImage.MATERIAL_PERSON, "Label", 6);
+        c11.add(liste);
+        c11.add(new Label("Participants : "));*/
+        c11.add(new SpanLabel(u.getName()));
+        
+                       //c0.add(c11);
+                       nbr++ ;
+               }
+                }
+                 
+       c11.add(new SpanLabel("( "+nbr+" Participants )"));
+       
+c0.add(c11);
+c0.add(c10);
  /*c0.add(c4);
-c0.add(c2);
+
         c0.add(c3);
         c0.add(c7);
         c0.add(c6);

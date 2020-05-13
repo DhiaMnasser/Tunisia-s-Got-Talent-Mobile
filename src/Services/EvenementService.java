@@ -6,6 +6,7 @@
 package Services;
 
 import Entities.Evenement;
+import Entities.User;
 import com.codename1.components.ImageViewer;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
@@ -31,6 +32,7 @@ import utils.Statics;
 public class EvenementService {
     
      public ArrayList<Evenement> events;
+     public ArrayList<User> users;
     private ImageViewer image ;
     private Resources theme ;
     public static EvenementService instance=null;
@@ -60,6 +62,51 @@ public class EvenementService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return events;
+    }
+    public ArrayList<User> getusers(){
+        String url = Statics.BASE_URL+"api/users";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                users = parseUsers(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return users;
+    }
+    public ArrayList<User> parseUsers(String jsonText){
+         
+        try {
+            users=new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String,Object> eventsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+          
+            List<Map<String,Object>> list = (List<Map<String,Object>>)eventsListJson.get("root");
+            for(Map<String,Object> obj : list){
+                User t = new User();
+                float id = Float.parseFloat(obj.get("id").toString());
+                t.setEvent_id((int)id);
+                
+                t.setName(obj.get("username").toString());
+                
+                 
+                 
+               
+                 
+                 
+                
+                
+                users.add(t);
+            }
+            
+            
+        } catch (IOException ex) {
+            
+        }
+        return users;
     }
     public Evenement geteventbyid(Evenement e ,int id ){
         String url = Statics.BASE_URL+"api/show/"+id;
