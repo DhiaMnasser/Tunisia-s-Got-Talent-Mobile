@@ -19,9 +19,11 @@
 
 package gui;
 
+import Services.EvenementService;
 import com.codename1.components.FloatingHint;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
@@ -29,6 +31,7 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
+import utils.Recherche;
 
 /**
  * Sign in UI
@@ -52,6 +55,7 @@ public class SignInForm extends BaseForm {
         
         TextField username = new TextField("", "Username", 20, TextField.ANY);
         TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
+        
         username.setSingleLineTextArea(false);
         password.setSingleLineTextArea(false);
         Button signIn = new Button("Sign In");
@@ -71,7 +75,25 @@ public class SignInForm extends BaseForm {
         content.setScrollableY(true);
         add(BorderLayout.SOUTH, content);
         signIn.requestFocus();
-        signIn.addActionListener(e -> new NewsfeedForm(res).show());
+        signIn.addActionListener(e -> {
+        
+         EvenementService ps= new EvenementService();
+            ps.checklog(username.getText(), password.getText());
+           
+           
+                if(Recherche.connexion ){
+                    HomeForm af=new HomeForm(res);
+                    
+                   af.show();
+                }
+                if(!Recherche.connexion){
+                    Dialog.show("information incorrect", "mot de passe ou username incorrect "  , "OK", null);
+                    Recherche.connexion=false;
+                }
+        
+        
+        
+        });
     }
     
 }

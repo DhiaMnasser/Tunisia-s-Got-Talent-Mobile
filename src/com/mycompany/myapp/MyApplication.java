@@ -56,9 +56,9 @@ public class MyApplication {
     
     public void start() {
        // new NewsfeedForm(theme).show();
-       //new SignInForm(theme).show();
+       new SignInForm(theme).show();
        //new EvenementForm().show();
-       new HomeForm().show();
+       //new HomeForm().show();
     }
 
     public void stop() {

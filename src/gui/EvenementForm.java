@@ -50,6 +50,8 @@ import com.codename1.ui.util.Resources;
 import gui.*;
 import java.util.ArrayList;
 import javafx.scene.paint.Color;
+import utils.Recherche;
+import utils.UserCourant;
 /**
  *
  * @author Achraf
@@ -57,8 +59,8 @@ import javafx.scene.paint.Color;
 public class EvenementForm extends Form{
    Evenement e = new Evenement();
 Form f;
-private Resources theme;
-public EvenementForm() {
+//private Resources theme;
+public EvenementForm(Resources theme) {
     //f = new Form();
 f = this ;
         EvenementService es = new EvenementService();
@@ -71,7 +73,13 @@ f = this ;
 
             @Override
             public void actionPerformed(ActionEvent evt) {
-                new HomeForm().show();
+                UserCourant.ok=null;
+             Recherche.username=false;
+  Recherche.email=false;
+     Recherche.connexion=false;
+    Recherche.name=false;
+     Recherche.mail=false;
+                        new SignInForm(theme).show();
                 
 
             }
@@ -89,26 +97,26 @@ Form f2 = new Form ("Evénements Triés" , BoxLayout.y());
                 f2.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
          f2.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                EvenementForm events = new EvenementForm();
+                EvenementForm events = new EvenementForm(theme);
                 events.getF().show();
             }
         });
          f2.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                RegionForm events = new RegionForm();
+                RegionForm events = new RegionForm(theme);
                 events.getF().show();
             }
         });
                f2.getToolbar().addCommandToLeftBar("back", null, (ev2) -> {
-            EvenementForm sb = new EvenementForm();
+            EvenementForm sb = new EvenementForm(theme);
             sb.show();
         });  
                 EvenementService es2 = new EvenementService();
@@ -217,7 +225,7 @@ Button b = new Button("Afficher Evénement");
 b.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-AfficherEvent ev = new AfficherEvent(e);
+AfficherEvent ev = new AfficherEvent(e,theme);
                     ev.getF().show();
             
             }  });
@@ -251,26 +259,26 @@ c0.add(c2);
          f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
          f.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                EvenementForm events = new EvenementForm();
+                EvenementForm events = new EvenementForm(theme);
                 events.getF().show();
             }
         });
          f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                RegionForm events = new RegionForm();
+                RegionForm events = new RegionForm(theme);
                 events.getF().show();
             }
         });
          f.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
-            HomeForm sb = new HomeForm();
+            HomeForm sb = new HomeForm(theme);
             sb.show();
         });
     
@@ -280,22 +288,29 @@ c0.add(c2);
         searchbtn.addActionListener((e)->
        {
            Form test = new Form ("Evénement recherché "+search.getText() , BoxLayout.y());
+           test.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
+             @Override
+            public void actionPerformed(ActionEvent evt) {
+          EvenementForm events = new EvenementForm(theme);
+           events.getF().show();
+            }
+        });
             test.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                EvenementForm events = new EvenementForm();
+                EvenementForm events = new EvenementForm(theme);
                 events.getF().show();
             }
         });
-            f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
+            test.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                RegionForm events = new RegionForm();
+                RegionForm events = new RegionForm(theme);
                 events.getF().show();
             }
         });
             test.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
-            EvenementForm sb = new EvenementForm();
+            EvenementForm sb = new EvenementForm(theme);
             sb.show();
         });
             int i = 0 ;
@@ -325,7 +340,7 @@ Button b = new Button("Afficher Evénement");
 b.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-AfficherEvent ev = new AfficherEvent(c);
+AfficherEvent ev = new AfficherEvent(c,theme);
                     ev.getF().show();
             
             }  });
@@ -454,7 +469,7 @@ Button b = new Button("Afficher Evénement");
 b.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-AfficherEvent ev = new AfficherEvent(e);
+AfficherEvent ev = new AfficherEvent(e,theme);
                     ev.getF().show();
             
             }  });

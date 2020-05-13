@@ -24,7 +24,10 @@ import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
 import java.util.ArrayList;
+import utils.Recherche;
+import utils.UserCourant;
 /**
  *
  * @author Achraf
@@ -37,7 +40,7 @@ public class AfficherEvent {
 Container c11 ;
 Label s ;
     //int SelectedID;
-    public AfficherEvent(Evenement event) {
+    public AfficherEvent(Evenement event,Resources theme) {
         f = new Form();
 
 
@@ -54,7 +57,8 @@ Label s ;
 
          @Override
          public void actionPerformed(ActionEvent evt) {
-                          new HomeForm().show();
+             
+                         // new HomeForm().show();
 
          }
      });
@@ -63,7 +67,7 @@ Label s ;
          f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
@@ -71,14 +75,14 @@ Label s ;
           f.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                EvenementForm events = new EvenementForm();
+                EvenementForm events = new EvenementForm(theme);
                 events.getF().show();
             }
         });
           f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
@@ -86,7 +90,7 @@ Label s ;
             
        
         f.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
-            EvenementForm sb = new EvenementForm();
+            EvenementForm sb = new EvenementForm(theme);
             sb.getF().show();
         });
 

@@ -5,12 +5,14 @@
  */
 package Services;
 
+import Entities.BCrypt;
 import Entities.Evenement;
 import Entities.User;
 import com.codename1.components.ImageViewer;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
+import com.codename1.io.Log;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.EncodedImage;
@@ -18,11 +20,16 @@ import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.util.Resources;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import utils.Recherche;
 import utils.Statics;
+import utils.UserCourant;
 
 
 /**
@@ -199,4 +206,74 @@ public class EvenementService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return events;
     }
+    ///////////
+    //////////////////////
+    /////////////////////////// USER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    public void checklog(String username,String password) {
+
+       ConnectionRequest connectionRequest = new ConnectionRequest() {
+            List<User> books = new ArrayList<>();
+            User userkh = new User();
+            User usercurrent = new User();
+
+            @Override
+            protected void readResponse(InputStream in) throws IOException {
+                JSONParser json = new JSONParser();
+                try {
+                    Reader reader = new InputStreamReader(in, "UTF-8");
+                    Map<String, Object> data = json.parseJSON(reader);
+                    List<Map<String, Object>> content = (List<Map<String, Object>>) data.get("root");
+                    books.clear();
+                    for (Map<String, Object> obj : content) {
+                        System.out.println((String) obj.get("username"));
+                        
+                        userkh = new User();
+                               //userkh.setId(((Double)obj.get("id")).intValue());
+                                userkh.setName((String) obj.get("username"));
+                                 
+                             userkh.setPassword((String) obj.get("password"));
+                       
+                        books.add(userkh);
+                        
+                    }
+                } catch (IOException err) {
+                    Log.e(err);
+                }
+            }
+
+            @Override
+            protected void postResponse() {
+                for (User obj : books) {
+                    if (username.equals(obj.getName()) && checkPassword(password, obj.getPassword())) {
+                      Recherche.connexion=true;
+                     
+                      User p =new User(obj.getName(),obj.getPassword());
+                      p.setPassword(obj.getPassword());
+                      p.setId(obj.getId());
+                      System.out.println(obj.getId());
+                      
+                      
+                      UserCourant.ok=p;
+                      
+                    }
+                   
+                }
+            }
+        };
+        connectionRequest.setUrl(Statics.BASE_URL+"api/usersall");
+        NetworkManager.getInstance().addToQueueAndWait(connectionRequest);
+    }
+    public static boolean checkPassword(String password_plaintext, String stored_hash) {
+        boolean password_verified = false;
+
+        if (null == stored_hash || !stored_hash.startsWith("$2y$")) {
+            throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+        }
+
+        password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
+
+        return (password_verified);
+    }
+    
 }

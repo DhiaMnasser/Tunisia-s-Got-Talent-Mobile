@@ -13,7 +13,15 @@ public class User {
     private int id ;
    private String name ;
    private int event_id ;
+private String password ;
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
     
 
     
@@ -51,6 +59,11 @@ public User( String name, int event_id) {
         
         this.name = name;
         this.event_id = event_id;
+    }
+public User( String name, String password) {
+        
+        this.name = name;
+        this.password = password;
     }
     public User() {
     }

@@ -15,6 +15,7 @@ import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
 
 /**
  *
@@ -25,7 +26,7 @@ public class AfficherRegion {
     int eventid;
    Region e = new Region(eventid);
     int user_id;
-    public AfficherRegion(Region event) {
+    public AfficherRegion(Region event , Resources theme) {
         f = new Form();
 
 
@@ -42,7 +43,7 @@ public class AfficherRegion {
 
          @Override
          public void actionPerformed(ActionEvent evt) {
-                          new HomeForm().show();
+                         // new HomeForm().show();
 
          }
      });
@@ -50,7 +51,7 @@ public class AfficherRegion {
          f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
@@ -58,21 +59,21 @@ public class AfficherRegion {
           f.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                EvenementForm events = new EvenementForm();
+                EvenementForm events = new EvenementForm(theme);
                 events.getF().show();
             }
         });
           f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
             
         f = new Form();
         f.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
-            RegionForm sb = new RegionForm();
+            RegionForm sb = new RegionForm(theme);
             sb.getF().show();
         });
         Region ev = new Region(e.getId());

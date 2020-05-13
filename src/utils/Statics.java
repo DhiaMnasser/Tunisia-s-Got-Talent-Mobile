@@ -14,3 +14,4 @@ public class Statics {
     public static final String IMAGE_URL="http://localhost/TGT/web/images";
     
 }
+

@@ -19,6 +19,8 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import java.util.ArrayList;
+import utils.Recherche;
+import utils.UserCourant;
 
 /**
  *
@@ -27,8 +29,8 @@ import java.util.ArrayList;
 public class RegionForm extends Form{
      Region e = new Region();
 Form f;
-private Resources theme;
-public RegionForm() {
+//private Resources theme;
+public RegionForm(Resources theme) {
     //f = new Form();
 f = this ;
         RegionService es = new RegionService();
@@ -41,7 +43,13 @@ f = this ;
 
             @Override
             public void actionPerformed(ActionEvent evt) {
-                new HomeForm().show();
+                UserCourant.ok=null;
+             Recherche.username=false;
+  Recherche.email=false;
+     Recherche.connexion=false;
+    Recherche.name=false;
+     Recherche.mail=false;
+                        new SignInForm(theme).show();
                 
 
             }
@@ -52,7 +60,7 @@ f = this ;
   f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
@@ -60,19 +68,19 @@ f = this ;
           f.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                EvenementForm events = new EvenementForm();
+                EvenementForm events = new EvenementForm(theme);
                 events.getF().show();
             }
         });
           f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm();
+          EvenementForm events = new EvenementForm(theme);
            events.getF().show();
             }
         });
          f.getToolbar().addCommandToLeftBar("back", null, (ev) -> {
-            HomeForm sb = new HomeForm();
+            HomeForm sb = new HomeForm(theme);
             sb.show();
         });
 
@@ -116,7 +124,7 @@ Button b = new Button("Afficher Region");
 b.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-AfficherRegion ev = new AfficherRegion(e);
+AfficherRegion ev = new AfficherRegion(e,theme);
                     ev.getF().show();
             
             }  });
