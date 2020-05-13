@@ -4,7 +4,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/shai/dev/CodenameOne/NBPlugin/tgtMob/build.xml</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/AddPubForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/gth/ServiceUpload.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/gth/ServiceG.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/LecteurForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/gth/Upload.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/ListPubForm.java</file>
         </group>
     </open-files>
 </project-private>
