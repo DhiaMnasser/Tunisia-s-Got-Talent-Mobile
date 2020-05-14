@@ -1,0 +1,69 @@
+event_evenement:
+    resource: "@eventBundle/Controller/EvenementController.php"
+    type:     annotation
+
+event_region:
+    resource: "@eventBundle/Controller/RegionController.php"
+    type:     annotation
+
+event_evenement:
+    resource: "@eventBundle/Controller/EvenementController.php"
+    type:     annotation
+
+event_evenement:
+    resource: "@eventBundle/Controller/EvenementController.php"
+    type:     annotation
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+event:
+    resource: "@eventBundle/Resources/config/routing.yml"
+    prefix:   /test
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+adesigns_calendar:
+    resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
+event_Notif:
+    resource: "@eventBundle/Controller/NotifController.php"
+    type:     annotation
+
+event_api:
+    path:   /api
+    defaults: {_controller: eventBundle:EvenementAPI:indexapi}
+
+eventshow_api:
+    path:   /api/show/{id}
+    defaults: {_controller: eventBundle:EvenementAPI:showapi}
+
+region_api:
+    path:   /api/region
+    defaults: {_controller: eventBundle:EvenementAPI:indexregionapi}
+
+regionshow_api:
+    path:   /api/region/show/{id}
+    defaults: {_controller: eventBundle:EvenementAPI:showapiregion}
+
+eventsearch_api:
+    path:   /api/search/{p}
+    defaults: {_controller: eventBundle:EvenementAPI:searchapi}
+    methods:  [GET, POST]
+
+eventusers_api:
+    path:   /api/users
+    defaults: {_controller: eventBundle:EvenementAPI:userstab}
+
+eventusers2_api:
+    path:   /api/usersall
+    defaults: {_controller: eventBundle:EvenementAPI:getusers}
+
+modif_api:
+    path:   /api/modif
+    defaults: {_controller: eventBundle:EvenementAPI:mod}

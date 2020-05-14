@@ -225,9 +225,9 @@ b.addPointerPressedListener(new ActionListener() {
          SMS sms=new SMS();
 String nt= "+21655886985";
 sms.SendSMS("achraftest","Ab123456", "Votre Inscription à l'événement a été effectuée", nt ,"https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
-                try {
+try {
               
-          JavaMailUtilAchraf.sendMail("mohamedachraf.chourabi@esprit.tn","Inscription à l'événement "+e.getNomevent()+" a été prise en considération");
+JavaMailUtilAchraf.sendMail("mohamedachraf.chourabi@esprit.tn","Inscription à l'événement "+e.getNomevent()+" a été prise en considération");
                 } catch (Exception ex) {
                     
                 }
