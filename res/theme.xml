@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="9" useXmlUI="false">
-    <ui name="GUI 1" />
+<resource majorVersion="1" minorVersion="11" useXmlUI="false">
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
     </theme>

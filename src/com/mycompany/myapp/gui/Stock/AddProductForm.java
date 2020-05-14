@@ -5,7 +5,6 @@
  */
 package com.mycompany.myapp.gui.Stock;
 import com.codename1.ui.Button;
-import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -15,7 +14,6 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.Services.Stock.ServiceProduct;
 import com.mycompany.myapp.Entities.Stock.Produit;
-import com.mycompany.myapp.Utils.Statics;
 /**
  *
  * @author Haddad

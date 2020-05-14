@@ -6,20 +6,17 @@
 package com.mycompany.myapp.Services.Stock;
 
 import com.mycompany.myapp.Entities.Stock.Categorie;
-import com.mycompany.myapp.Entities.Stock.Produit;
 import com.mycompany.myapp.Utils.Statics;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
-import com.codename1.ui.Command;
 import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.*;
 /**
  *
  * @author Haddad
@@ -66,7 +63,7 @@ for (Map<String,Object> obj:list){
  Categorie p=new Categorie();
  float id=Float.parseFloat(obj.get("id").toString());
  p.setId_Categorie((int) id);
- p.setNom_Categorie(obj.get("Name_Categorie").toString());
+ p.setNom_Categorie(obj.get("nomc").toString());
  Cats.add(p);
 
 }
@@ -75,7 +72,7 @@ for (Map<String,Object> obj:list){
   return Cats;
 }
 public ArrayList<Categorie> getAllCats(){
-String url=Statics.BASE_URL+"/TGTMobile/ListeCats";
+String url=Statics.BASE_URL+"store/ApiProduit/allC";
 req.setUrl(url);
 req.setPost(false);
 req.addResponseListener(new ActionListener<NetworkEvent>(){

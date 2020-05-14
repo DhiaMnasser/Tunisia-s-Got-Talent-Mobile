@@ -7,6 +7,24 @@
             <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/Mobile/src/com/mycompany/myapp/MyApplication.java</file>
         </group>
         <group name="PiDev"/>
-        <group name="tgt"/>
+        <group name="tgt">
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/Entities/Stock/Categorie.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/ProfileForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/Services/Stock/ServiceCategorie.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/Entities/Stock/Photo.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/ActivateForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/CleanModern.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/SignUpForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/WalkthruForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/Utils/Statics.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/NewsfeedForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/SignInForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/Stock/HomeForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/Stock/ListProductForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/Services/Stock/ServiceProduct.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/gui/BaseForm.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGTMobile/src/com/mycompany/myapp/Entities/Stock/Produit.java</file>
+        </group>
     </open-files>
 </project-private>

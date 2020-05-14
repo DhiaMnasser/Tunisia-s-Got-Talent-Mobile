@@ -120,6 +120,22 @@ public class Produit {
         this.Url = Url;
     }
     
+    public String getNcat(int i)
+    {
+    if (i==1)
+        return "Tshirt";
+    else if (i==2)
+        return "Acc";
+    else if (i==3)
+        return "Tickets";
+    else if (i==4)
+        return "Autres";
+    else if (i==5)
+        return "VIP";
+    else
+        return "Erreur";
+    }
+    
     /*public String getNCat(int id) throws SQLException {
           String p = null;
           Statement stm = cnx.createStatement();
@@ -169,6 +185,7 @@ public class Produit {
         }
         return true;
     }
+   
     
 
     @Override
