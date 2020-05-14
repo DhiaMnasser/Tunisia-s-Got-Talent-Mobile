@@ -26,8 +26,12 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import java.util.ArrayList;
+import Services.JavaMailUtilAchraf;
+import com.teknikindustries.bulksms.SMS;
+
 import utils.Recherche;
 import utils.UserCourant;
+
 /**
  *
  * @author Achraf
@@ -48,12 +52,12 @@ Label s ;
         
         
              
-        f.setTitle("Evénement détails");
+        f.setTitle(e.getNomevent());
 
         f.setLayout(BoxLayout.y());    
          
         Toolbar.setGlobalToolbar(true);
-        f.getToolbar().addCommandToOverflowMenu("Logout", null, new ActionListener() {
+       /* f.getToolbar().addCommandToOverflowMenu("Logout", null, new ActionListener() {
 
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -61,14 +65,14 @@ Label s ;
                          // new HomeForm().show();
 
          }
-     });
+     });*/
         
-         f = new Form();
+         
          f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm(theme);
-           events.getF().show();
+          HomeForm sb = new HomeForm(theme);
+            sb.show();
             }
         });
           
@@ -82,7 +86,7 @@ Label s ;
           f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm(theme);
+          RegionForm events = new RegionForm(theme);
            events.getF().show();
             }
         });
@@ -199,9 +203,40 @@ Button b = new Button("S'inscrire à l'Evénement");
 b.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-
+        
+        User p = UserCourant.ok ;
+        
+        EvenementService es = new EvenementService();
+        if (p.getEvent_id()==e.getId())
+                {
+                   Dialog.show(":(((","Vous êtes déjà inscrit à cet événement", "ok", "cancel");
+                   
+                   
+                }
+                else
+                {
+                    Dialog.show(":)))","Inscription prise en considération : Un EMAIL ainsi qu'un SMS vous ont été envoyés !!", "ok", "cancel");
+                }
+        
+       
+         p.setEvent_id(e.getId());
+         
+         es.modPersonne(p);
+         SMS sms=new SMS();
+String nt= "+21655886985";
+sms.SendSMS("achraftest","Ab123456", "Votre Inscription à l'événement a été effectuée", nt ,"https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
+                try {
+              
+          JavaMailUtilAchraf.sendMail("mohamedachraf.chourabi@esprit.tn","Inscription à l'événement "+e.getNomevent()+" a été prise en considération");
+                } catch (Exception ex) {
+                    
+                }
+                EvenementForm events = new EvenementForm(theme);
+                events.getF().show();
+            }  
             
-            }  });
+
+});
        
            c10.add(b);
            c0.addAll(c2,c3,c4,c5,c6,c7,c8,c9);
@@ -218,7 +253,7 @@ EvenementService es3 = new EvenementService();
         ArrayList<User> listevents3 = new ArrayList<>();
         listevents3 = es3.getusers();
                 for (User u : listevents3) {
-                    System.out.println(u.getName());
+                    
        
         
                if (e.getId()==u.getEvent_id()){

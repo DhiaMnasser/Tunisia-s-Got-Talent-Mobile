@@ -92,7 +92,7 @@ f = this ;
                     
 Form f2 = new Form ("Evénements Triés" , BoxLayout.y());
         
-                System.out.println("TEST");
+                
                
                 f2.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
@@ -233,7 +233,7 @@ AfficherEvent ev = new AfficherEvent(e,theme);
            c10.add(b);
 
            
-        System.out.println("TEST");
+        
         
                  
        
@@ -259,8 +259,8 @@ c0.add(c2);
          f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm(theme);
-           events.getF().show();
+          HomeForm sb = new HomeForm(theme);
+            sb.show();
             }
         });
          f.getToolbar().addMaterialCommandToSideMenu("       Evenements", FontImage.MATERIAL_PLACE, new ActionListener() {
@@ -287,7 +287,7 @@ c0.add(c2);
        f.addAll(search,searchbtn);
         searchbtn.addActionListener((e)->
        {
-           Form test = new Form ("Evénement recherché "+search.getText() , BoxLayout.y());
+           Form test = new Form ("Resultats pour : "+search.getText() , BoxLayout.y());
            test.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
@@ -340,8 +340,11 @@ Button b = new Button("Afficher Evénement");
 b.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
+                
 AfficherEvent ev = new AfficherEvent(c,theme);
+
                     ev.getF().show();
+                   
             
             }  });
        
@@ -362,7 +365,7 @@ AfficherEvent ev = new AfficherEvent(c,theme);
            test.show();
             }
        });
-        System.out.println("test");
+        
         //RECHERCHE
         
         // LISTE

@@ -6,8 +6,7 @@
         <group>
             <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/EvenementForm.java</file>
             <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/AfficherEvent.java</file>
-            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/gui/HomeForm.java</file>
-            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/Entities/Evenement.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGTMobile_AC/src/Services/EvenementService.java</file>
         </group>
     </open-files>
 </project-private>

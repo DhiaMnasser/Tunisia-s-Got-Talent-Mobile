@@ -122,7 +122,7 @@ public class EvenementService {
         req.addResponseListener((NetworkEvent evt) -> {
             byte[] data = (byte[]) evt.getMetaData();
             String s = new String(data);
-           System.out.println(data);
+           
           });
        NetworkManager.getInstance().addToQueue(req);
        return e;
@@ -226,10 +226,10 @@ public class EvenementService {
                     List<Map<String, Object>> content = (List<Map<String, Object>>) data.get("root");
                     books.clear();
                     for (Map<String, Object> obj : content) {
-                        System.out.println((String) obj.get("username"));
+                        
                         
                         userkh = new User();
-                               //userkh.setId(((Double)obj.get("id")).intValue());
+                               userkh.setId(((Double)obj.get("id")).intValue());
                                 userkh.setName((String) obj.get("username"));
                                  
                              userkh.setPassword((String) obj.get("password"));
@@ -274,6 +274,32 @@ public class EvenementService {
         password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
 
         return (password_verified);
+    }
+     public void modPersonne(User p){
+     ConnectionRequest con = new ConnectionRequest();
+     con.setPost(false);
+     
+     con.setFailSilently(true);
+     Evenement test = new Evenement() ;
+     //if(con.getResponseCode() == 200 || con.getResponseCode() == 202) {
+    // success code here
+    String Url = Statics.BASE_URL+"api/modif"+"?id="+p.getEvent_id()+"&iduser="+p.getId();
+        con.setUrl(Url);
+
+        
+
+        con.addResponseListener((e) -> {
+            String str = new String(con.getResponseData());
+            
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+
+     
+         
+         
+     
+        
+        
     }
     
 }

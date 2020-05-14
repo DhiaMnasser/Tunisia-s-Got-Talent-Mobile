@@ -60,8 +60,8 @@ f = this ;
   f.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm(theme);
-           events.getF().show();
+          HomeForm sb = new HomeForm(theme);
+            sb.show();
             }
         });
           
@@ -75,7 +75,7 @@ f = this ;
           f.getToolbar().addMaterialCommandToSideMenu("       Régions", FontImage.MATERIAL_PLACE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm(theme);
+          RegionForm events = new RegionForm(theme);
            events.getF().show();
             }
         });
@@ -109,7 +109,7 @@ for (Region e : listevents) {
        
  final FontImage part = FontImage.createMaterial(FontImage.MATERIAL_PLACE, "Label", 6);
         c7.add(part);
-        c7.add(new Label("Max Participants : "));
+        c7.add(new Label("Nombre de villes : "));
         int maxpart = e.getNb_villes();
         String s1 = Integer.toString(maxpart);
         c7.add(new Label(s1));

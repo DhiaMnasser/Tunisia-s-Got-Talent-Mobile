@@ -78,8 +78,8 @@ private ImageViewer image,image2 ;
           current.getToolbar().addMaterialCommandToSideMenu("      ", FontImage.MATERIAL_ACCOUNT_CIRCLE, new ActionListener() {
              @Override
             public void actionPerformed(ActionEvent evt) {
-          EvenementForm events = new EvenementForm(theme);
-           events.getF().show();
+          HomeForm sb = new HomeForm(theme);
+            sb.show();
             }
         });
       
@@ -105,7 +105,7 @@ private ImageViewer image,image2 ;
                    add(image);
                    Button btn = new Button("Bienvenue dans votre application");
                    add(btn) ;
-        System.out.println("Bienvenue "+UserCourant.ok);
+        
         
     }
     public Form getF() {

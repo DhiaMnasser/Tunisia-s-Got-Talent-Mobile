@@ -97,7 +97,7 @@ public class RegionService {
         req.addResponseListener((NetworkEvent evt) -> {
             byte[] data = (byte[]) evt.getMetaData();
             String s = new String(data);
-           System.out.println(data);
+           
           });
        NetworkManager.getInstance().addToQueue(req);
        return e;
