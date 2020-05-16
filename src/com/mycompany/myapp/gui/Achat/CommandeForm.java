@@ -7,10 +7,12 @@ package com.mycompany.myapp.gui.Achat;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
@@ -20,7 +22,9 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.Entities.Achat.Commande;
 import com.mycompany.myapp.Entities.Achat.LigneCommande;
+import com.mycompany.myapp.Entities.Stock.Produit;
 import com.mycompany.myapp.Services.Achat.LigneCommandeService;
+import com.mycompany.myapp.Services.Stock.ServiceProduct;
 import com.mycompany.myapp.Utils.Statics;
 import com.mycompany.myapp.gui.BaseForm;
 import java.util.ArrayList;
@@ -32,6 +36,8 @@ import java.util.ArrayList;
 public class CommandeForm extends BaseForm {
 
     Form current;
+    boolean show = true;
+    Form ligneCommandeListCont = new Form(BoxLayout.y());
 
     public CommandeForm(Resources res, Commande cmd) {
 
@@ -53,44 +59,79 @@ public class CommandeForm extends BaseForm {
         Container detailsCmd = new Container(BoxLayout.y());
         int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
 
-        detailsCmd.getAllStyles().setPaddingTop(size / 4);
-        SpanLabel numCmd = new SpanLabel("Numero Commande :" + cmd.getId());
-        SpanLabel date = new SpanLabel("Date :" + cmd.getDate());
-        String etatText = (cmd.getEtat() ? "Validee" : "En cour");
+        detailsCmd.getAllStyles().setPaddingTop(size / 5);
+
+        getToolbar().addCommandToRightBar("Back", null, (ev) -> {
+            new ListCommandesForm(res).show();
+
+        });
+//        SpanLabel numCmd = new SpanLabel("Numero Commande :" + cmd.getId());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SpanLabel date = new SpanLabel("Date :" + format.format(cmd.getDate()));
+        FontImage.setMaterialIcon(date, FontImage.MATERIAL_DATE_RANGE, 6);
+
+        String etatText = (cmd.getEtat() ? "Validee" : "En cours");
 
         SpanLabel etat = new SpanLabel("Etat :" + etatText);
+        FontImage.setMaterialIcon(etat, FontImage.MATERIAL_INFO, 6);
+
         SpanLabel address = new SpanLabel("Adresse :" + cmd.getAddress());
+        FontImage.setMaterialIcon(address, FontImage.MATERIAL_ROOM, 6);
+
         SpanLabel tel = new SpanLabel("Tel :" + cmd.getTel());
-        SpanLabel VotreProduits = new SpanLabel(" Votre Produits :");
-        detailsCmd.addAll(numCmd, date, etat, address, tel, VotreProduits);
+        FontImage.setMaterialIcon(tel, FontImage.MATERIAL_PHONE, 6);
+
+        SpanLabel VotreProduits = new SpanLabel("Afficher List des Produits");
+        FontImage.setMaterialIcon(VotreProduits, FontImage.MATERIAL_LIST, 6);
+        Button showProduits = new Button();
+
+        System.out.println("show etat" + show);
+        VotreProduits.setLeadComponent(showProduits);
+        detailsCmd.addAll(date, etat, address, tel, VotreProduits);
         add(detailsCmd);
+        showProduits.addActionListener((evt) -> {
+            if (!show) {
+                removeComponent(ligneCommandeListCont);
+                show = true;
+                VotreProduits.setText("Afficher List des Produits");
+
+            } else {
+                add(ligneCommandeListCont);
+                show = false;
+                VotreProduits.setText("Masquer List des Produits");
+
+            }
+            revalidate();
+        });
 
         ArrayList<LigneCommande> LigneCommandeListe = LigneCommandeService.getInstance().getLigneCommandesByPanier(cmd.getIdPanier());
         for (LigneCommande lc : LigneCommandeListe) {
+    Container ligneCommande = new Container(BoxLayout.x(), "ligneCommande");
 
 //            TODO 
-//            Produit p = ServiceProduit.getInstance().getProduitById(lc.getIdproduit())
-            String urlImage = Statics.IMAGE_URL + "/dev-img.jpg";
+            Produit p = ServiceProduct.getInstance().getOProducts(lc.getIdproduit());
 
 //        TODO
-//            String urlImage = Statics.IMAGE_URL+p.getUrl();
+//            String urlImage = Statics.IMAGE_URL + "/prd3.jpg";
+            String urlImage = Statics.P_IMAGE_URL+p.getUrl();
             EncodedImage enco = EncodedImage.createFromImage(res.getImage("icon.png"), false);
-//            URLImage imgser = URLImage.createToStorage(enco, "" + p.getNom(), urlImage);
-            URLImage imgser = URLImage.createToStorage(enco, "" + "dev-img.jpg", urlImage);
+            URLImage imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage);
+//            URLImage imgser = URLImage.createToStorage(enco, "" + "prd3.jpg", urlImage);
             ImageViewer img = new ImageViewer(imgser);
-            Container ligneCommande = new Container(BoxLayout.x(), "ligneCommande");
+
             Container details = new Container(BoxLayout.y());
 
             SpanLabel nomProduit = new SpanLabel(lc.getNomProduit());
             SpanLabel qte = new SpanLabel("Quantite :" + lc.getQuantite());
 //            TODO replace the product price 
-//            Label prix = new Label("Prix :" + lc.getQuantite()*p.getPrix());
-            SpanLabel prix = new SpanLabel("Prix :" + lc.getQuantite() * 12);
+            SpanLabel prix = new SpanLabel("Prix :" + lc.getQuantite()*p.getPrix_Produit());
+//            SpanLabel prix = new SpanLabel("Prix :" + lc.getQuantite() * 12);
             details.addAll(nomProduit, qte, prix);
 
             ligneCommande.addAll(img, details);
-            add(ligneCommande);
+            ligneCommandeListCont.add(ligneCommande);
         }
+
         System.out.println("CommandeForm");
 
     }

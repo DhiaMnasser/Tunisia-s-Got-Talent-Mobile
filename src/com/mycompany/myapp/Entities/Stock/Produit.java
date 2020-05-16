@@ -5,14 +5,16 @@
  */
 package com.mycompany.myapp.Entities.Stock;
 
+
 import java.util.*;
+import com.mycompany.myapp.Services.Stock.ServiceProduct;
+
 
 /**
  *
  * @author Haddad
  */
 public class Produit {
-    
     private int Id_Produit;
     private String Nom_Produit;
     private int Id_Categorie;
@@ -39,6 +41,18 @@ public class Produit {
 
     public Produit() {
     }
+
+    public Produit(String Nom_Produit, int Id_Categorie, int Quantite_Totale, float Prix_Produit, String Etat_Produit, String Taille_Produit, String Url) {
+        this.Nom_Produit = Nom_Produit;
+        this.Id_Categorie = Id_Categorie;
+        this.Quantite_Totale = Quantite_Totale;
+        this.Prix_Produit = Prix_Produit;
+        this.Etat_Produit = Etat_Produit;
+        this.Taille_Produit = Taille_Produit;
+        this.Url = Url;
+    }
+
+    
 
     public int getId_Produit() {
         return Id_Produit;
@@ -106,6 +120,22 @@ public class Produit {
         this.Url = Url;
     }
     
+    public String getNcat(int i)
+    {
+    if (i==1)
+        return "Tshirt";
+    else if (i==2)
+        return "Acc";
+    else if (i==3)
+        return "Tickets";
+    else if (i==4)
+        return "Autres";
+    else if (i==5)
+        return "VIP";
+    else
+        return "Erreur";
+    }
+    
     /*public String getNCat(int id) throws SQLException {
           String p = null;
           Statement stm = cnx.createStatement();
@@ -155,6 +185,7 @@ public class Produit {
         }
         return true;
     }
+   
     
 
     @Override

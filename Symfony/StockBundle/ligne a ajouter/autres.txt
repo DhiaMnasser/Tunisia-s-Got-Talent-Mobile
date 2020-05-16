@@ -1,0 +1,26 @@
+Base2:
+<li class="nav-item">
+            <a class="nav-link collapseProd" href="#" data-toggle="collapse" data-target="#collapseProd" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Store</span>
+            </a>
+            <div id="collapseProd" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les Commentaires</h6>
+                    <a class="collapse-item" href="{{ path('produit_new') }}">Ajouter un produit</a>
+                    <a class="collapse-item" href="{{ path('produit_index') }}">Liste des produits</a>
+                    <a class="collapse-item" href="{{ path('categorie_new') }}">Ajouter une categorie</a>
+                    <a class="collapse-item" href="{{ path('categorie_index') }}">Liste des categories</a>
+                    <a class="collapse-item" href="{{ path('stat') }}">Statistiques</a>
+                </div>
+            </div>
+        </li>
+Base:
+<li><a href="" class="menu"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>Store<span class="glyphicon glyphicon-menu-down" ></span></a></li>
+                <ul class="cl-effect-1">
+                    <li><a href="{{ path('tgt_stock_homepage') }}">Nos Produits</a></li>
+                    <li><a href="{{ path('categorie_read', { 'id': '1' }) }}">T-Shirt</a></li>
+                    <li><a href="{{ path('categorie_read', { 'id': '2' }) }}">Accessoire</a></li>
+                    <li><a href="{{ path('categorie_read', { 'id': '3' }) }}">Tickets</a></li>
+                    <li><a href="{{ path('categorie_read', { 'id': '4' }) }}">Others</a></li>
+                </ul>

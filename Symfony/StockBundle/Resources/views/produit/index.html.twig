@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <input id="myInput" type="text" placeholder="Search.." style="margin: 0 716px">
+        <br>
+        <br>
+
+        <div class="nav-item" style="text-align: center;">
+            <a class="nav-link collapseFil" href="#" data-toggle="collapse" data-target="#collapseFil" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span >Filter by Categorie</span>
+            </a>
+            <div id="collapseFil" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" >
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a href="{{ path('categorie_read', { 'id': '1' }) }}">T-Shirt</a><br>
+                    <a href="{{ path('categorie_read', { 'id': '2' }) }}">Accessoire</a><br>
+                    <a href="{{ path('categorie_read', { 'id': '3' }) }}">Tickets</a><br>
+                    <a href="{{ path('categorie_read', { 'id': '4' }) }}">Others</a><br>
+                </div>
+            </div>
+        </div>
+
+        <br>
+    <div class="show-top-grids">
+        <div class="col-sm-10 show-grid-left main-grids">
+            <div class="recommended">
+                <div class="recommended-grids english-grid">
+                    <div class="recommended-info">
+                        <div class="heading">
+                            <h3>Products</h3>
+                        </div>
+                        <div class="heading-right">
+                            <a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div id="myTable">
+    {% for produit in produits %}
+        <div class="prod">
+                    <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
+                        <div class="resent-grid-img recommended-grid-img">
+                            <a href="{{ path('tgt_stock_show',{ 'id' : produit.id }) }}"><img src="{{ produit.url }}" alt="" /></a>
+                        </div>
+                        <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
+                            <h5><a href="{{ path('tgt_stock_show',{ 'id' : produit.id }) }}" class="title">{{ produit.nom }}</a></h5>
+                            <ul>
+                                <li><h6><p><a href="{{ path('tgt_stock_show',{ 'id' : produit.id }) }}" class="author">Buy</a></p></h6></li>
+                                <li class="right-list"><p class="views views-info">{{ produit.prix }}dt</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                        </div>
+    {% endfor %}
+                    </div>
+                    <script src="{{ asset('js/jquery-min.js') }}"></script>
+                    <script>
+                        $(document).ready(function(){
+                            $("#myInput").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#myTable .prod").filter(function() {
+                                    $(this).toggle( $(this).text().toLowerCase().indexOf(value) > -1 );
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}

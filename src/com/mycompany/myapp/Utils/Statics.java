@@ -13,6 +13,7 @@ public class Statics {
     
     public static final String BASE_URL="http://localhost/TGTOf/web/app_dev.php";
     public static final String IMAGE_URL="http://localhost/TGTOf/web/images";
-    public static User CurrentUser = new User(10);
+    public static final String P_IMAGE_URL="http://localhost/TGTOf/web";
+    public static User CurrentUser = new User(20);
     
 }

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script src="{{ asset('Achat/js/saisie.js') }}"></script>
+
+    <link href="{{ asset('Achat/css/bootstrap.min.css') }}" rel='stylesheet' type='text/css' media="all" />
+    <link href="{{ asset( 'Achat/css/style.css') }}" rel="stylesheet" type="text/css" media="all">
+<style>
+.pdt{
+    padding: 30px;
+    margin: 10px;
+    /*background-color: #21DEEF;*/
+    height: 500px;
+    width: 90%;
+
+}
+.cart-item {
+    width: 300px;
+    height: 300px;
+}
+
+.cart-item-info {
+    width: 50%;
+    margin: auto;
+
+}
+.cart-item-info> {}
+img{
+    margin: 0;
+}
+
+</style>
+    <a href="{{ path('lignecommande_index') }}">< precedent</a>
+    <div class="pdt cart-sec simpleCart_shelfItem">
+
+    <div class="cart-item cyc" >
+        <img src="{{ asset('Achat/images/tshirt.png') }}" class="img-responsive" alt="" width="100%" height="150px">
+    </div>
+    <br>
+<div class="cart-item-info">
+
+
+    <h1>le produit : {{ ligneCommande.idProduit }}</h1>
+    <table>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+
+    </table>
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Acheter" class="btn btn-default" onclick="verify()"/>
+    {{ form_end(edit_form) }}
+
+
+    {% form_theme delete_form 'bootstrap_3_layout.html.twig' %}
+
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Supprimer">
+            {{ form_end(delete_form) }}
+
+    </div>
+    </div>
+{% endblock %}

@@ -48,7 +48,7 @@ public class ServicePanier {
 
             JSONParser j = new JSONParser();
             Map<String, Object> panierListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-
+            System.out.println(panierListJson);
             Map<String, Object> user = (Map) panierListJson.get("userId");
             float id = Float.parseFloat(panierListJson.get("id").toString());
             pan.setId((int) id);
@@ -65,6 +65,8 @@ public class ServicePanier {
     public Panier getPanierByUser() {
 //        TODO
         String url = Statics.BASE_URL + "/Apipanier/show?user=" + Statics.CurrentUser.getId();
+//        String url = Statics.BASE_URL + "/Apipanier/show?user=" + UserCourant.ok.getId();
+
 //String url = "";
         req.setUrl(url);
         req.setPost(false);

@@ -1,0 +1,60 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <link href="{{ asset('Achat/css/style.css') }}" rel='stylesheet' type='text/css' media="all" />
+
+    <a href="{{ path('commande_index2') }}">< Liste Des Commandes</a>
+    <h1>Commande</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if commande.date %}{{ commande.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{% if commande.etat %}Validee{% else %}pending{% endif %}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+
+<br><br><br>
+
+<table>
+    <thead>
+    <tr>
+        {#                <th> Id </th>#}
+        <th> Nom produit </th>
+        <th> Prix par unite</th>
+        <th> Quantite </th>
+{#        <th> Actions</th>#}
+    </tr>
+    </thead>
+    <tbody>
+    {% for ligneCommande in ligneCommandes %}
+            <tr class="lignecommande">
+                <td>{{ ligneCommande.nomproduit }}  </td>
+                <td> {{  ligneCommande.idproduit.prix   }}</td>
+                <td>{{ ligneCommande.quantite }}  </td>
+            </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    <div>
+        <h3 id="prix total">
+            Prix Total: {{ commande.idPanier.prixTotal }}
+        </h3>
+    </div>
+
+
+{% endblock %}
+{#{% extends 'index.html.twig' %}#}

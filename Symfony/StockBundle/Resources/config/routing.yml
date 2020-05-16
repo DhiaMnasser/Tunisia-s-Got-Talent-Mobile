@@ -1,0 +1,22 @@
+tgt_stock_homepage:
+    path:     /
+    defaults: { _controller: StockBundle:Default:index }
+tgt_stock_show:
+    path:     /show/{id}
+    defaults: { _controller: StockBundle:Produit:show }
+
+find_all:
+    path:     /ApiProduit/all
+    defaults: { _controller: StockBundle:ApiProduit:all }
+find_allC:
+    path:     /ApiProduit/allC
+    defaults: { _controller: StockBundle:ApiProduit:allC }
+find_cat:
+    path:     /ApiProduit/cat/{id}
+    defaults: { _controller: StockBundle:ApiProduit:findC }
+find_prod:
+    path:     /ApiProduit/prod/{id}
+    defaults: { _controller: StockBundle:ApiProduit:find }
+rech:
+    path:     /ApiProduit/rech/{nom}
+    defaults: { _controller: StockBundle:ApiProduit:rech }

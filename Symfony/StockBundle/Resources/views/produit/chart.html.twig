@@ -1,0 +1,37 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <html>
+    <head></head>
+    <body>
+    <h1>Statistiques :</h1>
+    <br>
+    <h1>Pie De Stock</h1>
+    <div id="div_chart"></div>
+    <h1>Histogram</h1>
+    <div id="div_histogram"></div>
+    <h1>Visiteurs</h1>
+    <div id="div_col"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw([piechart, histogram, col], ['div_chart', 'div_histogram', 'div_col']) }}
+    </script>
+    </body>
+    </html>
+
+    {#
+    <html>
+    <head></head>
+    <body>
+    <div id="div_piechart"></div>
+    <div id="div_histogram"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw([piechart, histogram], ['div_piechart', 'div_histogram']) }}
+    </script>
+    </body>
+    </html>
+    #}
+{% endblock %}

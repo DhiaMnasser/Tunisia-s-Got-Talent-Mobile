@@ -45,6 +45,7 @@ import com.mycompany.myapp.Entities.Achat.Panier;
 import com.mycompany.myapp.Entities.Stock.Produit;
 import com.mycompany.myapp.Services.Achat.LigneCommandeService;
 import com.mycompany.myapp.Services.Achat.ServicePanier;
+import com.mycompany.myapp.Services.Stock.ServiceProduct;
 import com.mycompany.myapp.Utils.Statics;
 import com.mycompany.myapp.gui.*;
 import java.util.ArrayList;
@@ -82,8 +83,8 @@ public class PanierForm extends BaseForm {
 
         Label spacer1 = new Label();
         Label spacer2 = new Label();
+        addTab(swipe, res.getImage("prd4.jpg"), spacer2, "VR");
         addTab(swipe, res.getImage("city.jpg"), spacer1, "tshirt  ");
-        addTab(swipe, res.getImage("city.jpg"), spacer2, "VR");
 
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
@@ -106,6 +107,7 @@ public class PanierForm extends BaseForm {
         FlowLayout flow = new FlowLayout(CENTER);
         flow.setValign(BOTTOM);
         Container radioContainer = new Container(flow);
+
         for (int iter = 0; iter < rbs.length; iter++) {
             rbs[iter] = RadioButton.createToggle(unselectedWalkthru, bg);
             rbs[iter].setPressedIcon(selectedWalkthru);
@@ -132,26 +134,34 @@ public class PanierForm extends BaseForm {
                 new LigneCommandeForm(res, lc).show();
             });
 //            TODO 
-//            Produit p = ServiceProduit.getInstance().getProduitById(lc.getIdproduit())
-            String urlImage = Statics.IMAGE_URL + "/dev-img.jpg";
+            Produit p = ServiceProduct.getInstance().getOProducts(lc.getIdproduit());
 
+//            String urlImage = Statics.IMAGE_URL + "/prd3.jpg";
 //        TODO
-//            String urlImage = Statics.IMAGE_URL+p.getUrl();
+            String urlImage = Statics.IMAGE_URL+p.getUrl();
             EncodedImage enco = EncodedImage.createFromImage(res.getImage("icon.png"), false);
-//            URLImage imgser = URLImage.createToStorage(enco, "" + p.getNom(), urlImage);
-            URLImage imgser = URLImage.createToStorage(enco, "" + "dev-img.jpg", urlImage);
+            URLImage imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage);
+//            URLImage imgser = URLImage.createToStorage(enco, "" + "prd3.jpg", urlImage);
             ImageViewer img = new ImageViewer(imgser);
+            img.setWidth(Display.getInstance().getDisplayWidth()/9);
 
             Container ligneCommande = new Container(BoxLayout.x(), "ligneCommande");
             Container details = new Container(BoxLayout.y());
 
             SpanLabel nomProduit = new SpanLabel(lc.getNomProduit());
+            FontImage.setMaterialIcon(nomProduit, FontImage.MATERIAL_LABEL_IMPORTANT, 6);
+
             SpanLabel qte = new SpanLabel("Quantite :" + lc.getQuantite());
+            FontImage.setMaterialIcon(qte, FontImage.MATERIAL_LABEL_IMPORTANT, 6);
+
 //            TODO replace the product price 
-//            Label prix = new Label("Prix :" + lc.getQuantite()*p.getPrix());
-            SpanLabel prix = new SpanLabel("Prix :" + lc.getQuantite() * 12);
+            SpanLabel prix = new SpanLabel( lc.getQuantite()*p.getPrix_Produit()+"DT");
+//            SpanLabel prix = new SpanLabel(lc.getQuantite() * 12 + "DT");
+            FontImage.setMaterialIcon(prix, FontImage.MATERIAL_ATTACH_MONEY, 6);
+
             details.addAll(nomProduit, qte, prix);
-            FloatingActionButton delete = FloatingActionButton.createFAB(FontImage.MATERIAL_DELETE_OUTLINE);
+            FloatingActionButton delete = FloatingActionButton.createFAB(FontImage.MATERIAL_DELETE);
+            delete.getAllStyles().setFgColor(0xff0000);
             delete.addActionListener((evt) -> {
                 LigneCommandeService.getInstance().deleteLigneCommande(lc);
                 new PanierForm(res).show();

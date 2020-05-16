@@ -1,0 +1,64 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+
+    <h1>Categories list</h1>
+    <input id="myInput" type="text" placeholder="Search.." style="margin: 0 500px" onkeyup="maRecherche()">
+    <br>
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomc</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <div>
+        {% for categorie in categories %}
+            <div>
+            <tr class="cat">
+                <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                <td>{{ categorie.nomc }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', { 'id': categorie.id }) }}" class="btn btn-success btn-circle">
+                        <i class="fas fa-check"></i>
+                    </a>
+                    <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}" class="btn btn-warning btn-circle">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </a>
+                </td>
+            </tr>
+            </div>
+        {% endfor %}
+        </div>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorie_new') }}">Create a new categorie</a>
+        </li>
+    </ul>
+    <script>
+        function maRecherche() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

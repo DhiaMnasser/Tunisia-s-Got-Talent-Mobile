@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <link href="{{ asset('Achat/css/bootstrap.min.css') }}" rel='stylesheet' type='text/css' media="all" />
+    <link href="{{ asset( 'Achat/css/style.css') }}" rel="stylesheet" type="text/css" media="all">
+{#    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>#}
+
+
+    <div class="check">
+        <h2>Panier </h2>
+        <hr>
+        <div class="col-md-9 cart-items">
+
+
+        {% for ligneCommande in ligneCommandes %}
+            {% if ligneCommande.idPanier == panier   %}
+            <div class="cart-header" style="padding: 10px">
+                <div >
+                    <a href="{{ path('lignecommande_supprimer',{'id': ligneCommande.id}) }}">
+                    <img class="close1">
+                    </a>
+                </div>
+                <div class="cart-sec simpleCart_shelfItem">
+                    <div class="cart-item cyc">
+                        <img src="{{ asset('Achat/images/tshirt.png') }}" class="img-responsive" alt="" width="100px" height="100px">
+                    </div>
+                    <div class="cart-item-info">
+                        <h2> {{ ligneCommande.nomproduit }}</h2>
+                        <br>
+                        <div class="qty">
+                            <h5>Prix :{{  ligneCommande.idproduit.prix   }}</h5>
+                            <br>
+                            <table  style="background: lightgray; align-content: center;width: 25%" >
+                            <tr>
+
+                                <td >
+                                    Quantite : {{ ligneCommande.quantite }}
+
+                                </td>
+                                <td >
+                                    <h5><a href="{{ path('lignecommande_edit',{'id': ligneCommande.id}) }}">
+                                            <img src="{{ asset('Achat/images/edit_icon.png') }}" class="img-responsive" width="25px" height="25px">
+                                        </a>
+                                    </h5>
+                                </td>
+                            </tr>
+
+                            </table>
+                        </div>
+
+
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+                <hr>
+            {% endif %}
+{% endfor %}
+        </div>
+        <div class="col-md-3 cart-total">
+            <a class="continue" href="{{ asset('store') }}">Continuer l'achat</a>
+            <div class="price-details">
+
+                <div class="clearfix"></div>
+            </div>
+            <ul class="total_price">
+                <li class="last_price"> <h4>TOTAL</h4></li>
+                <li class="last_price"><h5>{{ panier.prixTotal }} Dinars</h5></li>
+                <div class="clearfix"> </div>
+            </ul>
+
+
+            <div class="clearfix"></div>
+            <a class="order" href="{{ path('commande_new',{'id': panier.id }) }}">Commander</a>
+
+        </div>
+
+        <div class="clearfix"> </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

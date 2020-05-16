@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+
+        #edit-form{
+            margin: 10px;
+        }
+    </style>
+    <div id="edit-form">
+
+
+    <h4><a href="{{ path('commande_index') }}">< Mes Commandes</a></h4>
+    <h1>Completer Les Informations</h1>
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-default" value="Commander" />
+    {{ form_end(form) }}
+
+
+
+    </div>
+{#{% block stripe %}#}
+{#    {{ include('@Achat/commande/payement.html.twig') }}#}
+{#{% endblock %}#}
+
+{% endblock %}

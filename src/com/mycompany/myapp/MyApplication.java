@@ -23,6 +23,7 @@ import com.mycompany.myapp.gui.Achat.CheckoutForm;
 import com.mycompany.myapp.gui.Achat.PanierForm;
 import com.mycompany.myapp.Services.Achat.LigneCommandeService;
 import com.mycompany.myapp.Services.Achat.ServicePanier;
+import com.mycompany.myapp.gui.Stock.HomeForm;
 import com.mycompany.myapp.gui.WalkthruForm;
 
 /**
@@ -74,6 +75,7 @@ public class MyApplication {
 //System.out.println(CommandeService.getInstance().getCommandesByUser());
 //System.out.println(CommandeService.getInstance().addCommande());
         new PanierForm(theme).show();
+//        new StoreForm(theme).show();
 
 
     }

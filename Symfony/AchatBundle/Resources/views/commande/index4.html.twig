@@ -1,0 +1,58 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <link href="{{ asset('Achat/css/style.css') }}" rel='stylesheet' type='text/css' media="all" />
+    <style>
+     
+        table{
+            text-align: center;
+        }
+        th{
+            /*text-align: center;*/
+            padding: 10px;
+            border-bottom: solid 1px black;
+        }
+    </style>
+    <h1>Liste Des Commandes</h1>
+    <input id="myInput" type="text" placeholder="Search..">
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Etat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            {% if commande.etat != true %}
+            <tr class="commande">
+                <td><a href="{{ path('commande_show2', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
+                <td>{% if commande.date %}{{ commande.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if commande.etat %}Traitée{% else %}En cours{% endif %}</td>
+                <td>
+                            <a class="actions" href="{{ path('commande_valider', { 'id': commande.id }) }}">valider</a>
+                            <a class="actions" href="{{ path('commande_show2', { 'id': commande.id }) }}">show</a>
+
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="{{ asset('js/jquery-min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable .commande").filter(function() {
+                    $(this).toggle( $(this).text().toLowerCase().indexOf(value) > -1 );
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -19,7 +19,6 @@
 
 package com.mycompany.myapp.gui;
 
-
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Component;
 import com.codename1.ui.Display;
@@ -33,9 +32,9 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
-import com.mycompany.myapp.gui.Achat.CommandeForm;
 import com.mycompany.myapp.gui.Achat.ListCommandesForm;
 import com.mycompany.myapp.gui.Achat.PanierForm;
+import com.mycompany.myapp.gui.Stock.HomeForm;
 
 /**
  * Base class for the forms with common functionality
@@ -72,7 +71,7 @@ public class BaseForm extends Form {
 
     protected void addSideMenu(Resources res) {
         Toolbar tb = getToolbar();
-        Image img = res.getImage("city.jpg");
+        Image img = res.getImage("profile-background.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
@@ -86,8 +85,9 @@ public class BaseForm extends Form {
                         new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond"))
         ));
         
-        tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
+  tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_PERSON, e -> new ProfileForm(res).show());
+        tb.addMaterialCommandToSideMenu("Store", FontImage.MATERIAL_EXIT_TO_APP, e -> new HomeForm(res).show());
         tb.addMaterialCommandToSideMenu("Panier", FontImage.MATERIAL_SHOPPING_CART, e -> new PanierForm(res).show());
         tb.addMaterialCommandToSideMenu("Commande", FontImage.MATERIAL_PAGES, e -> new ListCommandesForm(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());

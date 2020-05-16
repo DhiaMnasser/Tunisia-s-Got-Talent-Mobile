@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <link href="{{ asset('Achat/css/style.css') }}" rel='stylesheet' type='text/css' media="all" />
+    <link href="{{ asset( 'Achat/css/style.css') }}" rel="stylesheet" type="text/css" media="all">
+
+<style>
+    input{
+        padding:5px;
+        border:solid 1px #dfe1e5;
+        border-radius:20px;
+        height:40px;
+        width: 200px;
+        outline: none;
+    }
+
+</style>
+<div id="list-cmd" style="margin: 10px;">
+
+
+    <div >
+
+      <h1 >Mes Commandes </h1>
+      <input  id="myInput" type="text" placeholder="Search..">
+
+    </div>
+<div>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>Reference</th>
+                <th>Date</th>
+                <th>Etat</th>
+{#                <th>Actions</th>#}
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr class="commande">
+                <td><a href="{{ path('commande_show',{'id':commande.id}) }}">cmd{{ commande.id }}</a></td>
+                <td>{% if commande.date %}{{ commande.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if commande.etat %}validee{% else %}Non validee{% endif %}</td>
+                <td><a class="btn  btn-outline" href="{{ path('commande_print',{'id':commande.id}) }}">Imprimer</a></td>
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+    <script src="{{ asset('js/jquery-min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable .commande").filter(function() {
+                    $(this).toggle( $(this).text().toLowerCase().indexOf(value) > -1 );
+                });
+            });
+        });
+    </script>
+{% endblock %}

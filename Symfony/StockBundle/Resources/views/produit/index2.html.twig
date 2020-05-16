@@ -1,0 +1,77 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+
+    <h1>Products</h1>
+    <input id="myInput" type="text" placeholder="Search.." style="margin: 0 500px" onkeyup="maRecherche()">
+    <br>
+
+    <table class="table" id="myTable">
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Nom</th>
+                 <th>Qte</th>
+                 <th>Prix</th>
+                 <th>Etat</th>
+                 <th>Size</th>
+                 <th>Image</th>
+                 <th>Action</th>
+             </tr>
+         </thead>
+    <tbody>
+    <div>
+    {% for produit in produits %}
+        <div>
+        <tr class="prod">
+            <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.qte }}</td>
+            <td>{{ produit.prix }}</td>
+            <td>{{ produit.etat }}</td>
+            <td>{{ produit.size }}</td>
+            <td>{{ produit.url }}</td>
+            <td>
+                <a href="{{ path('produit_show', { 'id': produit.id }) }}" class="btn btn-success btn-circle">
+                    <i class="fas fa-check"></i>
+                </a>
+                <a href="{{ path('produit_edit', { 'id': produit.id }) }}" class="btn btn-warning btn-circle">
+                    <i class="fas fa-fw fa-cog"></i>
+                </a>
+            </td>
+        </tr>
+        </div>
+    {% endfor %}
+    </div>
+
+    </tbody>
+    </table>
+    {{ knp_pagination_render(produits) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_new') }}">Create a new produit</a>
+        </li>
+    </ul>
+    <script>
+        function maRecherche() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

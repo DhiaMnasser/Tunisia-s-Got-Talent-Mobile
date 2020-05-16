@@ -10,6 +10,7 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.DateFormat;
 import com.codename1.l10n.ParseException;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.events.ActionListener;
@@ -51,18 +52,18 @@ public class CommandeService {
 //        TODO
 //        ServicePanier span = ServicePanier.getInstance();
 //        Panier pan = span.getPanierByUser();
-
-        String url = Statics.BASE_URL + "/Apicommande/new?user="+Statics.CurrentUser.getId()+"&adress="+cmd.getAddress()+"&tel="+cmd.getTel();
+//        String url = Statics.BASE_URL + "/Apicommande/new?user=" + UserCourant.ok.getId() + "&adress=" + cmd.getAddress() + "&tel=" + cmd.getTel();
+        String url = Statics.BASE_URL + "/Apicommande/new?user=" + Statics.CurrentUser.getId() + "&adress=" + cmd.getAddress() + "&tel=" + cmd.getTel();
 //          String url = "";
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                if(req.getResponseCode() == 200){ //Code HTTP 200 OK
-                oneCommande = parseOneCommande(new String(req.getResponseData()));
+                if (req.getResponseCode() == 200) { //Code HTTP 200 OK
+                    oneCommande = parseOneCommande(new String(req.getResponseData()));
 
-                req.removeResponseListener(this);
-                
+                    req.removeResponseListener(this);
+
                 }
             }
         });
@@ -73,11 +74,13 @@ public class CommandeService {
     public ArrayList<Commande> parseCommandes(String jsonText) {
         try {
             Commandes = new ArrayList<>();
+
             JSONParser j = new JSONParser();
             Map<String, Object> CommandesListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            System.out.println("list commandesjson" + CommandesListJson);
 
             List<Map<String, Object>> list = (List<Map<String, Object>>) CommandesListJson.get("root");
-            System.out.println(list);
+            System.out.println("list commandes " + list);
             for (Map<String, Object> obj : list) {
                 Commande cmd = new Commande();
                 float id = Float.parseFloat(obj.get("id").toString());
@@ -96,22 +99,22 @@ public class CommandeService {
 //                
                 Map<String, Object> date = (Map<String, Object>) obj.get("date");
                 float time = Float.parseFloat(date.get("timestamp").toString());
-//              DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                cmd.setDate(new Date((long) time * 1000));
 
+                cmd.setDate(new Date((long) time * 1000));
                 Commandes.add(cmd);
             }
 
         } catch (IOException ex) {
-
         }
+
         return Commandes;
     }
 
     public ArrayList<Commande> getCommandesByUser() {
 //        TODO
-        String url = Statics.BASE_URL + "/Apicommande/index?user="+Statics.CurrentUser.getId();
-//        String url = "";
+        String url = Statics.BASE_URL + "/Apicommande/index?user=" + Statics.CurrentUser.getId();
+//        String url = Statics.BASE_URL + "/Apicommande/index?user=" + UserCourant.ok.getId();
+
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -124,50 +127,47 @@ public class CommandeService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return Commandes;
     }
-    
-    
+
     public Commande parseOneCommande(String jsonText) {
         Commande cmd = new Commande();
         try {
 
             System.out.println("parseOneCommande :   :");
-            
+
             JSONParser j = new JSONParser();
             Map<String, Object> CommandesListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            System.out.println(CommandesListJson);
-                float id = Float.parseFloat(CommandesListJson.get("id").toString());
-                cmd.setId((int) id);
-                Map<String, Object> user = (Map) CommandesListJson.get("userId");
+            System.out.println("one commande" + CommandesListJson);
+            float id = Float.parseFloat(CommandesListJson.get("id").toString());
+            cmd.setId((int) id);
+            Map<String, Object> user = (Map) CommandesListJson.get("userId");
 
-                cmd.setUser_id((int) Float.parseFloat(user.get("id").toString()));
+            cmd.setUser_id((int) Float.parseFloat(user.get("id").toString()));
 
-                Map<String, Object> panier = (Map) CommandesListJson.get("idPanier");
+            Map<String, Object> panier = (Map) CommandesListJson.get("idPanier");
 
-                cmd.setIdPanier((int) Float.parseFloat(panier.get("id").toString()));
-                cmd.setAddress((String) CommandesListJson.get("address"));
-                cmd.setTel((String) CommandesListJson.get("tel"));
-                cmd.setEtat((Boolean) Boolean.parseBoolean(CommandesListJson.get("etat").toString()));
+            cmd.setIdPanier((int) Float.parseFloat(panier.get("id").toString()));
+            cmd.setAddress((String) CommandesListJson.get("address"));
+            cmd.setTel((String) CommandesListJson.get("tel"));
+            cmd.setEtat((Boolean) Boolean.parseBoolean(CommandesListJson.get("etat").toString()));
 
 //                
-                Map<String, Object> date = (Map<String, Object>) CommandesListJson.get("date");
-                float time = Float.parseFloat(date.get("timestamp").toString());
+            Map<String, Object> date = (Map<String, Object>) CommandesListJson.get("date");
+            float time = Float.parseFloat(date.get("timestamp").toString());
 //              DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                cmd.setDate(new Date((long) time * 1000));
+            cmd.setDate(new Date((long) time * 1000));
 
-            
 //            }
-
         } catch (IOException ex) {
             System.out.println(ex);
 
         }
         return cmd;
     }
-    
-     public Commande getCommandesById(Commande cmd) {
+
+    public Commande getCommandesById(Commande cmd) {
 //        TODO replace url and lc in parameters
-        String url = Statics.BASE_URL+"/Apicommande/410/show";
-//        String url = Statics.BASE_URL+"/Apicommande/"+cmd.getId()+"/show";
+//        String url = Statics.BASE_URL + "/Apicommande/410/show";
+        String url = Statics.BASE_URL+"/Apicommande/"+cmd.getId()+"/show";
         req.setUrl(url);
         req.setPost(false);
         req.setHttpMethod("GET");

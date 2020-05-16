@@ -12,6 +12,7 @@ import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.TextField;
@@ -22,7 +23,9 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.Entities.Achat.LigneCommande;
+import com.mycompany.myapp.Entities.Stock.Produit;
 import com.mycompany.myapp.Services.Achat.LigneCommandeService;
+import com.mycompany.myapp.Services.Stock.ServiceProduct;
 import com.mycompany.myapp.Utils.Statics;
 import com.mycompany.myapp.gui.BaseForm;
 
@@ -49,30 +52,38 @@ public class LigneCommandeForm extends BaseForm {
 
         tb.addSearchCommand(e -> {
         });
+        int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
 
         Container ligneCmd = new Container(BoxLayout.y());
+        getToolbar().addCommandToRightBar("Back", null, (ev) -> {
+            new PanierForm(res).show();
 
+        });
 //        TODO replace url
-        String urlImage = Statics.IMAGE_URL + "/dev-img.jpg";
-//            Produit p = ServiceProduit.getInstance().getProduitById(lc.getIdproduit());
-//            String urlImage = Statics.IMAGE_URL+p.getUrl();
-        Image placeholder = Image.createImage(140, 50);
+//        String urlImage = Statics.IMAGE_URL + "/dev-img.jpg";
+            Produit p = ServiceProduct.getInstance().getOProducts(lc.getIdproduit());
+            String urlImage = Statics.P_IMAGE_URL+p.getUrl();
+        Image placeholder = Image.createImage(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight() / 3);
         EncodedImage enco = EncodedImage.createFromImage(placeholder, true);
 //        TODO
-//            URLImage imgser = URLImage.createToStorage(enco, "" + p.getNom(), urlImage);
-        URLImage imgser = URLImage.createToStorage(enco, "" + "dev-img.jpg", urlImage);
+            URLImage imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage);
+//        URLImage imgser = URLImage.createToStorage(enco, "" + "dev-img.jpg", urlImage);
         ImageViewer img = new ImageViewer(imgser);
         img.setWidth(500);
         SpanLabel nomProduit = new SpanLabel(lc.getNomProduit());
+        FontImage.setMaterialIcon(nomProduit, FontImage.MATERIAL_LABEL_IMPORTANT, 6);
 
+        nomProduit.getAllStyles().setAlignment(CENTER);
         TextField quantite = new TextField(lc.getQuantite());
         quantite.setHint("Quantite :" + lc.getQuantite());
 
 //            TODO replace the product price 
-//            Label prix = new Label("Prix :" + lc.getQuantite()*p.getPrix());
-        SpanLabel prix = new SpanLabel("Prix :" + lc.getQuantite() * 12);
+            SpanLabel prix = new SpanLabel( lc.getQuantite()*p.getPrix_Produit()+"DT" );
+//        SpanLabel prix = new SpanLabel( lc.getQuantite() * 12+"DT" );
+        FontImage.setMaterialIcon(prix, FontImage.MATERIAL_ATTACH_MONEY, 6);
+
         ligneCmd.addAll(img, nomProduit, quantite, prix);
-        Button checkoutBtn = new Button("Sauve guarder");
+        Button checkoutBtn = new Button("Sauvegarder");
         checkoutBtn.addActionListener((evt) -> {
             int qte;
             String msg;
@@ -95,7 +106,6 @@ public class LigneCommandeForm extends BaseForm {
             }
 
         });;
-        int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
 
         ligneCmd.getAllStyles().setPaddingTop(size / 2);
         add(CENTER, ligneCmd);

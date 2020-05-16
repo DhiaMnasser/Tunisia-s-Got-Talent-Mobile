@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {#
+    <style>
+th, td {
+
+}
+
+
+    </style>
+
+    <a href="{{ path('lignecommande_index') }}">< Back</a>
+    <h1>Your Order</h1>
+
+    <table>
+        <tbody>
+
+            <tr>
+                <th>Nomproduit</th>
+                <td>{{ ligneCommande.nomproduit }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ ligneCommande.quantite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="actions">
+
+            <a class="btn btn-default" href="{{ path('lignecommande_edit', { 'id': ligneCommande.id }) }}">Edit</a>
+
+        <br>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+
+    </div>
+
+    #}
+
+
+
+
+    <link href="{{ asset('Achat/css/bootstrap.min.css') }}" rel='stylesheet' type='text/css' media="all" />
+    <link href="{{ asset( 'Achat/css/style.css') }}" rel="stylesheet" type="text/css" media="all">
+    <style>
+        .pdt{
+            padding: 30px;
+            margin: 10px;
+            /*background-color: #21DEEF;*/
+            height: 250px;
+            width: 90%;
+
+        }
+        .cart-item {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cart-item-info {
+            width: 50%;
+            margin: auto;
+
+        }
+        .cart-item-info> {}
+        img{
+            margin: 0;
+        }
+
+    </style>
+    <h4><a href="{{ path('lignecommande_index') }}">< Liste Des Produits</a></h4>
+    <div class="pdt cart-sec simpleCart_shelfItem">
+
+        <div class="cart-item cyc" >
+            <img src="{{ asset('Achat/images/tshirt.png') }}" class="img-responsive" alt="" width="100%" height="150px">
+        </div>
+        <br>
+        <div class="cart-item-info">
+
+
+            <h1>le produit : {{ ligneCommande.idProduit }}</h1>
+<br>
+            <h4>Quantite : {{ ligneCommande.quantite }}</h4>
+
+{#            <table>#}
+{#                #}
+{#                <tr>#}
+{#                    <td>#}
+{#                        <a class="btn btn-default" href="{{ path('lignecommande_edit', { 'id': ligneCommande.id }) }}">Edit</a>#}
+{#                    </td>#}
+{#                    <td>#}
+
+{#                        {% form_theme delete_form 'bootstrap_3_layout.html.twig' %}#}
+
+{#                        {{ form_start(delete_form) }}#}
+{#                        <input type="submit" class="btn btn-danger" value="Supprimer">#}
+{#                        {{ form_end(delete_form) }}#}
+{#                    </td>#}
+{#                </tr>#}
+
+{#            </table>#}
+
+            <br>
+            <div>
+                <a class="btn btn-default" href="{{ path('lignecommande_edit', { 'id': ligneCommande.id }) }}">Edit</a>
+
+            </div>
+
+
+            {% form_theme delete_form 'bootstrap_3_layout.html.twig' %}
+
+            {{ form_start(delete_form) }}
+            <input type="submit" class="btn btn-danger" value="Supprimer">
+            {{ form_end(delete_form) }}
+
+
+
+
+            <br>
+
+
+
+        </div>
+    </div>
+{% endblock %}

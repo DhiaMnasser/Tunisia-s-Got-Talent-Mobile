@@ -47,8 +47,9 @@ public class LigneCommandeService {
 //    TODO
     public boolean addLigneCommande(Produit p) {
 
-//        TODO
+//        TODO replace url's
         String url = Statics.BASE_URL+"/Apilignecommande/new?idProduit=" + p.getId_Produit() + "&user="+Statics.CurrentUser.getId();
+//        String url = Statics.BASE_URL+"/Apilignecommande/new?idProduit=" + p.getId_Produit() + "&user="+UserCourant.ok.getId();
 
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -65,7 +66,7 @@ public class LigneCommandeService {
     
         public boolean deleteLigneCommande(LigneCommande lc) {
 
-//        TODO
+
         String url = Statics.BASE_URL+"/Apilignecommande/"+lc.getId()+"/supprimer";
 
         req.setUrl(url);
@@ -83,7 +84,7 @@ public class LigneCommandeService {
         
         public boolean editLigneCommande(LigneCommande lc) {
 
-//        TODO
+
         String url = Statics.BASE_URL+"/Apilignecommande/"+lc.getId()+"/edit?qte="+lc.getQuantite();
 
         req.setUrl(url);
@@ -134,6 +135,7 @@ public class LigneCommandeService {
     public ArrayList<LigneCommande> getLigneCommandesByCurrentPanier() {
 //        TODO
         String url = Statics.BASE_URL+"/Apilignecommande/index?user="+Statics.CurrentUser.getId();
+//        String url = Statics.BASE_URL+"/Apilignecommande/index?user="+UserCourant.ok.getId();
 //String url = "";
         req.setUrl(url);
         req.setPost(false);
@@ -142,7 +144,7 @@ public class LigneCommandeService {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 lignesCommandes = parseLigneCommandes(new String(req.getResponseData()));
-                System.out.println("get Ligne Commande bt panier " + lignesCommandes);
+                System.out.println("get Ligne Commande by panier " + lignesCommandes);
                 req.removeResponseListener(this);
             }
         });
@@ -151,9 +153,9 @@ public class LigneCommandeService {
     }
 
      public ArrayList<LigneCommande> getLigneCommandesByPanier(int idPanier) {
-//        TODO
+
         String url = Statics.BASE_URL+"/Apilignecommande/getLigneCommandesByPanier?panier="+idPanier;
-//String url = "";
+
         req.setUrl(url);
         req.setPost(false);
         req.setHttpMethod("GET");
@@ -161,7 +163,7 @@ public class LigneCommandeService {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 lignesCommandes = parseLigneCommandes(new String(req.getResponseData()));
-                System.out.println("get Ligne Commande bt panier " + lignesCommandes);
+                System.out.println("get Ligne Commande by panier " + lignesCommandes);
                 req.removeResponseListener(this);
             }
         });
@@ -196,10 +198,10 @@ public class LigneCommandeService {
         return lg;
     }
 
-    public LigneCommande getLigneCommandesById(/*LigneCommande lc*/) {
+    public LigneCommande getLigneCommandesById(LigneCommande lc) {
 //        TODO replace url and lc in parameters
-        String url = Statics.BASE_URL+"/Apilignecommande/255/show";
-//        String url = Statics.BASE_URL+"/Apilignecommande/"+lc.getId()+"/show";
+//        String url = Statics.BASE_URL+"/Apilignecommande/255/show";
+        String url = Statics.BASE_URL+"/Apilignecommande/"+lc.getId()+"/show";
         req.setUrl(url);
         req.setPost(false);
         req.setHttpMethod("GET");
