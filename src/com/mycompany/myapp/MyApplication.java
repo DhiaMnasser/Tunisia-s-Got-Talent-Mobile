@@ -59,7 +59,7 @@ public class MyApplication {
     });
         f.show();*/
        //new HomeForm(theme).show();
-       new HomeForm().show();
+       new HomeForm(theme).show();
         
     }
 

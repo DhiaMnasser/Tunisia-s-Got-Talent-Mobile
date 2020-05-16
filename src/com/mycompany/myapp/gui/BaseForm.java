@@ -91,7 +91,7 @@ public class BaseForm extends Form {
         //tb.addMaterialCommandToSideMenu("Panier", FontImage.MATERIAL_SHOPPING_CART, e -> new PanierForm(res).show());
         //tb.addMaterialCommandToSideMenu("Commande", FontImage.MATERIAL_PAGES, e -> new ListProductForm(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
-       // tb.addMaterialCommandToSideMenu("Store", FontImage.MATERIAL_EXIT_TO_APP, e -> new HomeForm(res).show());
+        tb.addMaterialCommandToSideMenu("Store", FontImage.MATERIAL_EXIT_TO_APP, e -> new HomeForm(res).show());
         
     }
 }

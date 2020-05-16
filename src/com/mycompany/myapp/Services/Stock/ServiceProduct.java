@@ -119,8 +119,27 @@ NetworkManager.getInstance().addToQueueAndWait(req);
 return products;
         }
    
+   
    public ArrayList<Produit> getRProducts(String s){
    String url=Statics.BASE_URL+"store/ApiProduit/rech/"+s;
+   req.setUrl(url);
+   req.setPost(false);
+   req.addResponseListener(new ActionListener<NetworkEvent>(){
+   
+
+    @Override
+    public void actionPerformed(NetworkEvent evt) {
+    products=parseProducts(new String(req.getResponseData()));
+    req.removeResponseListener(this);
+
+    }
+});
+NetworkManager.getInstance().addToQueueAndWait(req);
+return products;
+        }
+   
+      public ArrayList<Produit> getOProducts(int i){
+   String url=Statics.BASE_URL+"store/ApiProduit/prod/"+i;
    req.setUrl(url);
    req.setPost(false);
    req.addResponseListener(new ActionListener<NetworkEvent>(){

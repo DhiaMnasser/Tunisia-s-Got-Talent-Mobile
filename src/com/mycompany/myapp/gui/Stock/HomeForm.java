@@ -18,11 +18,11 @@ import com.mycompany.myapp.gui.BaseForm;
  */
 public class HomeForm extends BaseForm{
 Form current;
-    //public HomeForm(Resources res) {
-       public HomeForm() {  
+    public HomeForm(Resources res) {
+        
         super(BoxLayout.y());
         current=this;
-        //super.addSideMenu(res);
+        super.addSideMenu(res);
         setTitle("Home");
         setLayout(BoxLayout.y());
         
@@ -31,7 +31,7 @@ Form current;
         Button btnListProduct=new Button("liste des produits");
         Button btnChart=new Button("Chart");
         btnAddProduct.addActionListener(e-> new AddProductForm(current).show());
-        btnListProduct.addActionListener(e-> new ListProductForm(current).show());
+        btnListProduct.addActionListener(e-> new ListProductForm(res,current).show());
         btnChart.addActionListener(e-> new ChartForm(current).show());
         addAll(btnAddProduct,btnListProduct,btnChart);
      

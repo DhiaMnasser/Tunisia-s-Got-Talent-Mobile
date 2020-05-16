@@ -20,7 +20,7 @@ import com.mycompany.myapp.Entities.Stock.Produit;
  */
 public class AddProductForm extends Form {
 public AddProductForm(Form previous) {
-        setTitle("Add a new product");
+        setTitle("Product ?");
         setLayout(BoxLayout.y());    
         TextField tfName = new TextField("","ProductName");
         TextField tfQuantity_Total= new TextField("", "Quantity_Total");
@@ -29,7 +29,7 @@ public AddProductForm(Form previous) {
         TextField tfEtat=new TextField("","Etat");
         TextField tfId_Cat=new TextField("","Id_Cat");
         TextField tfURL=new TextField("","Url");
-        Button btnValider = new Button("Add product");
+        Button btnValider = new Button("Send !");
      btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -47,7 +47,7 @@ public AddProductForm(Form previous) {
                                  tfSize_Product.getText());
                             if (ServiceProduct.getInstance().addProduct(p))
                             { Dialog.show("success", "connection accepted", "ok", "cancel");
-                            System.out.println("😈😈😈😃 ajout avec succes 😃😈😈😈");
+                            System.out.println("Envoyer !");
                             } else
                             Dialog.show("ERROR", "Server error", "ok", "cancel");
                     } 
