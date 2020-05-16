@@ -1,0 +1,82 @@
+stock_produit:
+    resource: "@StockBundle/Controller/ProduitController.php"
+    type:     annotation
+
+
+achat_panier:
+    resource: "@AchatBundle/Controller/PanierController.php"
+    type:     annotation
+
+achat_panier_api:
+    resource: "@AchatBundle/Controller/ApiPanierController.php"
+    type:     annotation
+
+achat_ligne_commande:
+    resource: "@AchatBundle/Controller/LigneCommandeController.php"
+    type:     annotation
+
+achat_ligne_commande_api:
+    resource: "@AchatBundle/Controller/ApiLigneCommandeController.php"
+    type:     annotation
+
+achat_commande:
+    resource: "@AchatBundle/Controller/CommandeController.php"
+    type:     annotation
+
+achat_commande_api:
+    resource: "@AchatBundle/Controller/ApiCommandeController.php"
+    type:     annotation
+
+tgt_stock_categorie:
+    resource: "@StockBundle/Controller/CategorieController.php"
+    type:     annotation
+
+tgt_stock:
+    resource: "@StockBundle/Resources/config/routing.yml"
+    prefix:   /store
+
+achat:
+    resource: "@AchatBundle/Resources/config/routing.yml"
+    prefix:   /achat
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+evaluation:
+    resource: "@EvaluationBundle/Resources/config/routing.yml"
+    prefix:   /evaluation
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+adesigns_calendar:
+    resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+event_Notif:
+    resource: "@eventBundle/Controller/NotifController.php"
+    type:     annotation
+
+event_region:
+    resource: "@eventBundle/Controller/RegionController.php"
+    type:     annotation
+
+event_evenement:
+    resource: "@eventBundle/Controller/EvenementController.php"
+    type:     annotation
+
+event:
+    resource: "@eventBundle/Resources/config/routing.yml"
+    prefix:   /test
+forum:
+    resource: "@ForumBundle/Resources/config/routing.yml"
+    prefix:   /forum
+
+
