@@ -35,6 +35,7 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.gth.service.UserCourant;
+import java.io.IOException;
 
 /**
  * The user profile form
@@ -55,7 +56,7 @@ public class ProfileForm extends BaseForm {
         
         tb.addSearchCommand(e -> {});
         
-        
+          if (UserCourant.ok.getConfirmation_token().length()==3){
         Image img = res.getImage("profile-background.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
@@ -80,7 +81,36 @@ public class ProfileForm extends BaseForm {
                     )
                 )
         ));
+          }else
+          {
+              Image img = res.getImage("profile-background.jpg");
+        if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
+            img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
+        }
+        ScaleImageLabel sl = new ScaleImageLabel(img);
+        sl.setUIID("BottomPad");
+        sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
 
+        Label facebook = new Label("786 followers", res.getImage("facebook-logo.png"), "BottomPad");
+        Label twitter = new Label("486 followers", res.getImage("twitter-logo.png"), "BottomPad");
+        facebook.setTextPosition(BOTTOM);
+        twitter.setTextPosition(BOTTOM);
+        
+            try {
+                add(LayeredLayout.encloseIn(
+                        sl,
+                        BorderLayout.south(
+                                GridLayout.encloseIn(3,
+                                        facebook,
+                                        FlowLayout.encloseCenter(
+                                                new Label(Image.createImage(UserCourant.ok.getConfirmation_token()).scaled(200,200 ), "PictureWhiteBackgrond")),
+                                        twitter
+                                )
+                        ) 
+                )); } catch (IOException ex) {
+               
+            }
+          }
         TextField username = new TextField(UserCourant.ok.getUsername());
         username.setUIID("TextFieldBlack");
         addStringValue("Username", username);

@@ -90,6 +90,8 @@ public class SignUpForm extends BaseForm {
         ));
         next.requestFocus();
         next.addActionListener(e ->{
+           if(!(username.getText().equals("")) && (!email.getText().equals("")) && (!password.getText().equals(""))  && (!confirmPassword.getText().equals(""))){
+                if((password.getText().equals(confirmPassword.getText()))){
              PersonneService ps= new PersonneService();
             ps.getUser(username.getText(), email.getText());
                 Personne p =new Personne(username.getText(),email.getText(),password.getText());
@@ -109,7 +111,12 @@ public class SignUpForm extends BaseForm {
                      Recherche.username=false;
                 }
               
-                 
+                }else{
+                   Dialog.show("reconfirmez le password", ""  , "OK", null); 
+                }
+           }else{
+               Dialog.show("champs vides", "remplir les champs "  , "OK", null); 
+           }
                 
         });
     }

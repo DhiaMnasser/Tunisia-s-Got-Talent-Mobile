@@ -5,6 +5,8 @@
  */
 package com.gth.service;
 
+import com.codename1.ui.Label;
+
 /**
  *
  * @author mohamed khrouf
@@ -15,4 +17,5 @@ public class Recherche {
      public static boolean connexion=false;
     public static boolean name=false;
      public static boolean mail=false; 
+     public static Label pic;
 }

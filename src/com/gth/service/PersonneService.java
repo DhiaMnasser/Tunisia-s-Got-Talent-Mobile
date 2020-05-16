@@ -167,6 +167,7 @@ public class PersonneService {
                     List<Map<String, Object>> content = (List<Map<String, Object>>) data.get("root");
                     books.clear();
                     for (Map<String, Object> obj : content) {
+                         System.out.println((String) obj.get("confirmationToken"));
                         System.out.println((String) obj.get("username"));
                         
                         userkh = new Personne();
@@ -176,7 +177,7 @@ public class PersonneService {
                                 userkh.setEmail((String) obj.get("email"));
                                  userkh.setEmail_canonical((String) obj.get("email"));
                              userkh.setPassword((String) obj.get("password"));
-                       
+                        userkh.setConfirmation_token((String) obj.get("confirmationToken"));
                         books.add(userkh);
                         
                     }
@@ -196,7 +197,7 @@ public class PersonneService {
                       p.setId(obj.getId());
                       System.out.println(obj.getId());
                       p.setEnabled(obj.getEnabled());
-                      
+                      p.setConfirmation_token(obj.getConfirmation_token());
                       UserCourant.ok=p;
                       
                     }

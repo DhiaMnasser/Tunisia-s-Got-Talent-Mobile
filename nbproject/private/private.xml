@@ -4,19 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/CleanModern.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/SignUpForm.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/ModForm.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/MyApplication.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/ProfileForm.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/UserForm.java</file>
             <file>file:/C:/sgbd/test3/src/com/gth/myapp/BaseForm.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/service/Recherche.java</file>
+            <file>file:/C:/sgbd/test3/src/com/gth/myapp/CleanModern.java</file>
             <file>file:/C:/sgbd/test3/src/com/gth/myapp/ActivateForm.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/service/UserCourant.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/service/PersonneService.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/SignInForm.java</file>
-            <file>file:/C:/sgbd/test3/src/com/gth/myapp/NewsfeedForm.java</file>
         </group>
     </open-files>
 </project-private>
