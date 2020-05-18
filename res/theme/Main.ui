@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Main" cloudDestinationProperty="Main" title="Hi World" >
+  <component type="Label" name="Label" cloudDestinationProperty="Label" text="Hi World" >
+  </component>
+</component>
