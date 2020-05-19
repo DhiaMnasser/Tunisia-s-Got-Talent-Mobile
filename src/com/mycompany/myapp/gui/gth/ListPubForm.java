@@ -7,6 +7,7 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
 import com.gthcompagny.myapp.entities.gth.Upload;
 import com.mycompany.myapp.services.gth.ServiceUpload;
 
@@ -16,12 +17,13 @@ import java.util.List;
 public class ListPubForm extends Form {
     Form current;
 
-    public ListPubForm(Form previous) {
+    public ListPubForm(Resources res) {
         this.current = this;
 
         this.setLayout(BoxLayout.y());
 
         setTitle("La Liste des Prestations");
+        setUIID("SignIn");
 
         ArrayList<Upload> uploads=ServiceUpload.getInstance().getAllUploads();
         for(Upload u:uploads){
@@ -29,7 +31,7 @@ public class ListPubForm extends Form {
             Label lb= new Label("Auteur:"+u.getAuteur()+"  Catégorie:"+u.getCategorie());
             Container cnt=new Container(BoxLayout.y());
             btn.addActionListener(evt -> {
-                new LecteurForm(current,u.getId(),u.getSource()).show();
+                new LecteurForm(res,u.getId(),u.getSource()).show();
             });
             cnt.addAll(btn,lb);
             add(cnt);
@@ -38,7 +40,7 @@ public class ListPubForm extends Form {
 
         getToolbar().addCommandToSideMenu("Liste des Prestations",null,ev->{this.show();});
         getToolbar().addCommandToSideMenu("Ajouter une Prestation",null,ev->{
-            new AddPubForm(previous).show();
+            new AddPubForm(res).show();
         });
     }
 }

@@ -9,18 +9,22 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.plaf.UIManager;
+import com.codename1.ui.util.Resources;
+import com.mycompany.myapp.gui.mohamed.NewsfeedForm;
 import com.mycompany.myapp.services.gth.ServiceUpload;
+import com.mycompany.myapp.services.mohamed.UserCourant;
 
 import java.io.IOException;
 
 public class LecteurForm extends Form {
 
-    public LecteurForm(Form previous,int id,String lien) {
+    public LecteurForm(Resources res,int id,String lien) {
 
 
         Container ctnBt=new Container(BoxLayout.x());
         setTitle("Lecteur");
         setLayout(new BorderLayout());
+        //setUIID("SignIn");
 
         setToolbar(new Toolbar());
         Style s = UIManager.getInstance().getComponentStyle("Title");
@@ -41,15 +45,15 @@ public class LecteurForm extends Form {
             }
         }
 
-
+        add(BorderLayout.NORTH, new Label(res.getImage("tgt300.png"), "LogoLabel"));
         getToolbar().addCommandToOverflowMenu("Voter",null,evt -> {
            ServiceUpload.getInstance().vote(id);
            if(ServiceUpload.getInstance().vote(id))
            Dialog.show("Succes","Vote Effectué","Ok",null);
         });
 
-        Boolean jury=false;
-        if(jury){
+        
+        if(UserCourant.ok.getJury()==1){
             getToolbar().addCommandToOverflowMenu("Buzzer",null,evt -> {
 
             });
@@ -62,7 +66,7 @@ public class LecteurForm extends Form {
 
 
         getToolbar().addCommandToLeftBar("Retour",null,e->{
-            previous.showBack();
+            new NewsfeedForm(res).show();
         });
     }
 }

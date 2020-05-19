@@ -4,13 +4,66 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/AddPubForm.java</file>
-            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/gth/ServiceUpload.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/MyApplication.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/ahmed/Categorie.java</file>
             <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/gth/ServiceG.java</file>
-            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/LecteurForm.java</file>
-            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/gth/Upload.java</file>
             <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/UserForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/ahmed/ChartForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/achraf/AchrafUtils.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/mohamed/UserCourant.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/dhia/ListCommandesForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/dhia/StripePayment.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/NewsfeedForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/dhia/CommandeForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/ahmed/AddProductForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/dhia/PanierForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/mohamed/Recherche.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/WalkthruForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/ModForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/ahmed/HomeForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/ahmed/ServiceProduct.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/gth/GthUtils.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/ahmed/Statics.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/ahmed/ServiceAh.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/ActivateForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/dhia/ServicePanier.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/SignInForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/SignUpForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/ahmed/Produit.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/ahmed/ShowForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/dhia/DhiaUtils.java</file>
             <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/ListPubForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/ahmed/ListProductForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/dhia/CommandeService.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/CleanModern.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/AddPubForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/MohForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/gth/LecteurForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/dhia/CheckoutForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/ProfileForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/dhia/LigneCommande.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/dhia/LigneCommandeService.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/dhia/DhiaForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/gth/ServiceUpload.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/Statics.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/ahmed/ListProductCForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/mohamed/BCrypt.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/mohamed/Personne.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/ahmed/AhmedUtils.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/ahmed/ServiceCategorie.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/mohamed/PersonneService.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/dhia/LigneCommandeForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/gui/mohamed/BaseForm.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/hassen/HassenUtils.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/services/mohamed/JavaMailUtil.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/dhia/Commande.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/ahmed/Photo.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/mohamed/MohamedUtils.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/gth/Statics.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/utils/ahmed/User.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/dhia/Panier.java</file>
+            <file>file:/C:/Users/gth/Documents/NetBeansProjects/TGT_Mobile/src/com/mycompany/myapp/entities/dhia/SendEmailTLS.java</file>
         </group>
     </open-files>
 </project-private>
