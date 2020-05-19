@@ -12,6 +12,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.dhia.Commande;
+import com.mycompany.myapp.services.mohamed.UserCourant;
 import com.mycompany.myapp.utils.ahmed.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -108,8 +109,8 @@ public class CommandeService {
 
     public ArrayList<Commande> getCommandesByUser() {
 //        TODO
-        String url = Statics.BASE_URL + "/Apicommande/index?user=" + Statics.CurrentUser.getId();
-//        String url = Statics.BASE_URL + "/Apicommande/index?user=" + UserCourant.ok.getId();
+//        String url = Statics.BASE_URL + "/Apicommande/index?user=" + Statics.CurrentUser.getId();
+            String url = Statics.BASE_URL + "/Apicommande/index?user=" + UserCourant.ok.getId();
 
         req.setUrl(url);
         req.setPost(false);

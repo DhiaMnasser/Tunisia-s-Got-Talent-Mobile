@@ -29,6 +29,7 @@ public class ChartForm extends BaseForm{
         //Form previous
     setTitle("Chart");
     setLayout(BoxLayout.y());
+    setUIID("SignIn");
     double[] values = new double[]{12, 14, 11, 10, 19};
 
     // Set up the renderer

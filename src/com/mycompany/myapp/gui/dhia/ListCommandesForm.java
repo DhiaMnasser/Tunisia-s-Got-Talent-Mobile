@@ -40,6 +40,7 @@ public class ListCommandesForm extends BaseForm {
         getTitleArea().setUIID("Container");
         setTitle("Mes Commandes");
         getContentPane().setScrollVisible(false);
+        setUIID("SignIn");
 
         super.addSideMenu(res);
 

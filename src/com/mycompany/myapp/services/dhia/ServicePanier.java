@@ -12,6 +12,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.dhia.Panier;
+import com.mycompany.myapp.services.mohamed.UserCourant;
 import com.mycompany.myapp.utils.ahmed.Statics;
 import java.io.IOException;
 import java.util.Map;
@@ -62,8 +63,8 @@ public class ServicePanier {
 
     public Panier getPanierByUser() {
 //        TODO
-        String url = Statics.BASE_URL + "/Apipanier/show?user=" + Statics.CurrentUser.getId();
-//        String url = Statics.BASE_URL + "/Apipanier/show?user=" + UserCourant.ok.getId();
+//        String url = Statics.BASE_URL + "/Apipanier/show?user=" + Statics.CurrentUser.getId();
+          String url = Statics.BASE_URL + "/Apipanier/show?user=" + UserCourant.ok.getId();
 
 //String url = "";
         req.setUrl(url);

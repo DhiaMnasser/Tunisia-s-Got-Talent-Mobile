@@ -28,6 +28,7 @@ public class Personne {
      private Timestamp password_requested_at;
      private String roles;
      private int jury;
+     private int event_id;
      
 
     public Personne(String username, String email, String password)  {
@@ -55,29 +56,19 @@ public class Personne {
         this.roles ="ROLE_USER";
         this.jury=0;
     }
-    public Personne(int id,String username, String email, String password)  {
-       
-         
-       this.id=id ;
-        this.username = username;
-        this.username_canonical = username;
-        this.email = email;
-        this.email_canonical = email;
-        this.enabled = 1;
-        this.Salt = "";
-        this.password = password ;
-       int randomPIN = 1000;
-       java.util.Date date = new Date();
-        Timestamp last = new java.sql.Timestamp(date.getTime());
-	 
-        this.last_login = last;
-        this.confirmation_token = String.valueOf(randomPIN);
-         Timestamp requested = new java.sql.Timestamp(date.getTime());
-        this.password_requested_at = requested;
-        this.roles = "ROLE_USER";
-        this.jury=0;
-      
+    
+   public Personne(String username,int event_id)  {
+      this.username=username;
+      this.event_id=event_id;
     }
+   
+   public Personne(String username,String password)  {
+      this.username=username;
+      this.password=password;
+    }
+    
+    
+    
     public Personne() {
        this.id=this.id +1;
      
@@ -98,6 +89,17 @@ public class Personne {
         this.roles = "ROLE_USER";
         this.jury=0;
     }
+
+    public int getEvent_id() {
+        return event_id;
+    }
+
+    public void setEvent_id(int event_id) {
+        this.event_id = event_id;
+    }
+    
+    
+    
   
     public String getEmail_canonical() {
         return email_canonical;

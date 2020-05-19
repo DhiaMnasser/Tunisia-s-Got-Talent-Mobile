@@ -42,6 +42,7 @@ public class ShowForm extends BaseForm {
         getTitleArea().setUIID("Container");
         setTitle(p.getNom_Produit());
         getContentPane().setScrollVisible(false);
+        setUIID("SignIn");
 
         super.addSideMenu(res);
 

@@ -38,7 +38,7 @@ public class ServiceCategorie {
         return instance;
     }
 public boolean addCat(Categorie p) {
-String url=Statics.BASE_URL+"/TGTMobile/AddCatDbMobile?namecat="+p.getNom_Categorie()+"&idcat="+p.getId_Categorie();
+String url="http://localhost:81/TGTOf/web/app_dev.php"+"/TGTMobile/AddCatDbMobile?namecat="+p.getNom_Categorie()+"&idcat="+p.getId_Categorie();
 req.setUrl(url);
 req.addResponseListener(new ActionListener<NetworkEvent>(){
     @Override
@@ -73,7 +73,7 @@ for (Map<String,Object> obj:list){
   return Cats;
 }
 public ArrayList<Categorie> getAllCats(){
-String url=Statics.BASE_URL+"/store/ApiProduit/allC";
+String url="http://localhost:81/TGTOf/web/app_dev.php"+"/store/ApiProduit/allC";
 req.setUrl(url);
 req.setPost(false);
 req.addResponseListener(new ActionListener<NetworkEvent>(){

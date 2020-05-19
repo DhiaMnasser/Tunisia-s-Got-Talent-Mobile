@@ -13,6 +13,7 @@ import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.ahmed.Produit;
 import com.mycompany.myapp.entities.dhia.LigneCommande;
+import com.mycompany.myapp.services.mohamed.UserCourant;
 import com.mycompany.myapp.utils.ahmed.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,8 +48,8 @@ public class LigneCommandeService {
     public boolean addLigneCommande(Produit p) {
 
 //        TODO replace url's
-        String url = Statics.BASE_URL+"/Apilignecommande/new?idProduit=" + p.getId_Produit() + "&user="+Statics.CurrentUser.getId();
-//        String url = Statics.BASE_URL+"/Apilignecommande/new?idProduit=" + p.getId_Produit() + "&user="+UserCourant.ok.getId();
+//        String url = Statics.BASE_URL+"/Apilignecommande/new?idProduit=" + p.getId_Produit() + "&user="+Statics.CurrentUser.getId();
+       String url = Statics.BASE_URL+"/Apilignecommande/new?idProduit=" + p.getId_Produit() + "&user="+UserCourant.ok.getId();
 
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -133,8 +134,8 @@ public class LigneCommandeService {
 
     public ArrayList<LigneCommande> getLigneCommandesByCurrentPanier() {
 //        TODO
-        String url = Statics.BASE_URL+"/Apilignecommande/index?user="+Statics.CurrentUser.getId();
-//        String url = Statics.BASE_URL+"/Apilignecommande/index?user="+UserCourant.ok.getId();
+//        String url = Statics.BASE_URL+"/Apilignecommande/index?user="+Statics.CurrentUser.getId();
+           String url = Statics.BASE_URL+"/Apilignecommande/index?user="+UserCourant.ok.getId();
 //String url = "";
         req.setUrl(url);
         req.setPost(false);

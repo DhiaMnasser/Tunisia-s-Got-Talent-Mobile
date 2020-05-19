@@ -49,6 +49,7 @@ public class ListProductForm extends BaseForm{
         super(BoxLayout.y());
         super.addSideMenu(res);
         setTitle("Store");
+        setUIID("SignIn");
         
         
         
@@ -185,7 +186,7 @@ public class ListProductForm extends BaseForm{
            
        
             Container im = new Container(BoxLayout.y());
-            String urlImage = Statics.P_IMAGE_URL +p.getUrl();
+            String urlImage = "http://localhost:81/TGTOf/web/images" +p.getUrl();
                Image placeholder = Image.createImage(222, 287);
                EncodedImage enco = EncodedImage.createFromImage(placeholder, true);
                Image imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage , URLImage.RESIZE_SCALE);

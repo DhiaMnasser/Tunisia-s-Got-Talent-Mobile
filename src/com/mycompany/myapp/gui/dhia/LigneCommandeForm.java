@@ -43,6 +43,7 @@ public class LigneCommandeForm extends BaseForm {
         setToolbar(tb);
         getTitleArea().setUIID("Container");
         setTitle("Ordre");
+        setUIID("SignIn");
 //        setTitleStyle(new Style(Color.TRANSPARENT,Color.WHITESMOKE, Font , 0));
         getContentPane().setScrollVisible(false);
 

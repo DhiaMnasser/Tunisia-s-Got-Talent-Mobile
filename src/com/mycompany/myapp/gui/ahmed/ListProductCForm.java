@@ -54,6 +54,7 @@ public class ListProductCForm extends BaseForm{
         setUIID("SignIn");
         
         
+        
         getTitleArea().setUIID("Container");
         
         getContentPane().setScrollVisible(true);
@@ -175,7 +176,7 @@ public class ListProductCForm extends BaseForm{
            
        
             Container im = new Container(BoxLayout.y());
-            String urlImage = Statics.P_IMAGE_URL +p.getUrl();
+            String urlImage = "http://localhost:81/TGTOf/web/images" +p.getUrl();
                Image placeholder = Image.createImage(222, 287);
                EncodedImage enco = EncodedImage.createFromImage(placeholder, true);
                Image imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage , URLImage.RESIZE_SCALE);

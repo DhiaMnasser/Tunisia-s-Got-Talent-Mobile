@@ -34,6 +34,7 @@ public class CheckoutForm extends Form {
     public CheckoutForm(Resources res, Panier pan) {
 
         this.setLayout(new BorderLayout());
+        setUIID("SignIn");
 
         TextField address = new TextField("", "adresse");
         TextField tel = new TextField("", "tel");

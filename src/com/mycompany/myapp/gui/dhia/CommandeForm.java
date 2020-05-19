@@ -48,6 +48,7 @@ public class CommandeForm extends BaseForm {
         getTitleArea().setUIID("Container");
         setTitle("Commande " + cmd.getId());
         getContentPane().setScrollVisible(false);
+        setUIID("SignIn");
 
         super.addSideMenu(res);
 

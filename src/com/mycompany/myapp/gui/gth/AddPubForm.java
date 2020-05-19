@@ -15,6 +15,7 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.gthcompagny.myapp.entities.gth.Upload;
+import com.mycompany.myapp.gui.mohamed.BaseForm;
 import com.mycompany.myapp.gui.mohamed.NewsfeedForm;
 import com.mycompany.myapp.services.gth.ServiceUpload;
 import com.mycompany.myapp.services.mohamed.UserCourant;
@@ -22,7 +23,7 @@ import java.io.IOException;
 import rest.file.uploader.tn.FileUploader;
 
 
-public class AddPubForm extends Form {
+public class AddPubForm extends BaseForm {
     Label lbNomVi=new Label("Votre video");
 
     private FileUploader file;
@@ -34,14 +35,15 @@ public class AddPubForm extends Form {
     
 
     public AddPubForm(Resources res){
+        Toolbar tb = new Toolbar(true);
+        setToolbar(tb);
 
 
         Container cnt=new Container(BoxLayout.y());
         setUIID("SignIn");
         Container cntVi=new Container(BoxLayout.x());
         //entete
-        Toolbar tb = new Toolbar(true);
-        setToolbar(tb);
+        super.addSideMenu(res);
         getTitleArea().setUIID("Container");
         setTitle("Welcome-Bienvenue");
         getContentPane().setScrollVisible(false);

@@ -21,7 +21,8 @@ import com.mycompany.myapp.services.ahmed.ServiceProduct;
 public class AddProductForm extends Form {
 public AddProductForm(Form previous) {
         setTitle("Product ?");
-        setLayout(BoxLayout.y());    
+        setLayout(BoxLayout.y());
+        setUIID("SignIn");
         TextField tfName = new TextField("","ProductName");
         TextField tfQuantity_Total= new TextField("", "Quantity_Total");
         TextField tfPrice_Product=new TextField("","Price_Product");

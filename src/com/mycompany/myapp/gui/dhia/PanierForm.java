@@ -65,6 +65,7 @@ public class PanierForm extends BaseForm {
         setToolbar(tb);
         getTitleArea().setUIID("Container");
         setTitle("Panier");
+        setUIID("SignIn");
 //        setTitleStyle(new Style(Color.TRANSPARENT,Color.WHITESMOKE, Font , 0));
         getContentPane().setScrollVisible(false);
 
@@ -78,7 +79,7 @@ public class PanierForm extends BaseForm {
         Label spacer1 = new Label();
         Label spacer2 = new Label();
         addTab(swipe, res.getImage("prd4.jpg"), spacer2, "VR");
-        addTab(swipe, res.getImage("city.jpg"), spacer1, "tshirt  ");
+        addTab(swipe, res.getImage("prd4.jpg"), spacer1, "tshirt  ");
 
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");

@@ -32,11 +32,12 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import com.mycompany.myapp.gui.achraf.EvenementForm;
+import com.mycompany.myapp.gui.achraf.RegionForm;
 import com.mycompany.myapp.gui.ahmed.HomeForm;
 import com.mycompany.myapp.gui.dhia.ListCommandesForm;
 import com.mycompany.myapp.gui.dhia.PanierForm;
 import com.mycompany.myapp.gui.gth.AddPubForm;
-import com.mycompany.myapp.gui.gth.ListPubForm;
 import com.mycompany.myapp.services.mohamed.Recherche;
 import com.mycompany.myapp.services.mohamed.UserCourant;
 
@@ -92,11 +93,13 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> new ProfileForm(res).show());
         tb.addMaterialCommandToSideMenu("edit profile", FontImage.MATERIAL_SETTINGS, e -> new ModForm(res).show());
+        tb.addMaterialCommandToSideMenu("Evenements", FontImage.MATERIAL_PLACE, e -> new EvenementForm(res).show());
         tb.addMaterialCommandToSideMenu("Ajouter une Publication", FontImage.MATERIAL_ADD_TO_PHOTOS, e -> new AddPubForm(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_PERSON, e -> new ProfileForm(res).show());
         tb.addMaterialCommandToSideMenu("Store", FontImage.MATERIAL_EXIT_TO_APP, e -> new HomeForm(res).show());
         tb.addMaterialCommandToSideMenu("Panier", FontImage.MATERIAL_SHOPPING_CART, e -> new PanierForm(res).show());
         tb.addMaterialCommandToSideMenu("Commande", FontImage.MATERIAL_PAGES, e -> new ListCommandesForm(res).show());
+        tb.addMaterialCommandToSideMenu("Régions", FontImage.MATERIAL_PLACE, e -> new  RegionForm(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             UserCourant.ok=null;
              Recherche.username=false;
@@ -106,4 +109,6 @@ public class BaseForm extends Form {
             Recherche.mail=false; 
             new WalkthruForm(res).show();});
     }
+    
+          
 }

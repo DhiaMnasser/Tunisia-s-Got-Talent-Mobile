@@ -13,7 +13,6 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.ahmed.Produit;
-import com.mycompany.myapp.utils.ahmed.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,7 @@ public class ServiceProduct {
     }
 
     public boolean addProduct(Produit p) {
-        String url = Statics.BASE_URL + "/TGTMobile/AddProductDbMobile?nameproduct=" + p.getNom_Produit() + "&qteproduct=" + p.getQuantite_Totale()
+        String url = "http://localhost:81/TGTOf/web/app_dev.php" + "/TGTMobile/AddProductDbMobile?nameproduct=" + p.getNom_Produit() + "&qteproduct=" + p.getQuantite_Totale()
                 + "&size=" + p.getTaille_Produit() + "&prixproduct=" + p.getPrix_Produit() + "&etatproduct=" + p.getEtat_Produit()
                 + "&id_admin=" + p.getId_Categorie();
         req.setUrl(url);
@@ -141,7 +140,7 @@ public class ServiceProduct {
     }
 
     public ArrayList<Produit> getCProducts(int i) {
-        String url = Statics.BASE_URL + "/store/ApiProduit/cat/" + i;
+        String url = "http://localhost:81/TGTOf/web/app_dev.php" + "/store/ApiProduit/cat/" + i;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -158,7 +157,7 @@ public class ServiceProduct {
     }
 
     public ArrayList<Produit> getRProducts(String s) {
-        String url = Statics.BASE_URL + "/store/ApiProduit/rech/" + s;
+        String url = "http://localhost:81/TGTOf/web/app_dev.php" + "/store/ApiProduit/rech/" + s;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -175,7 +174,7 @@ public class ServiceProduct {
     }
 
     public Produit getOProducts(int i) {
-        String url = Statics.BASE_URL + "/store/ApiProduit/prod/" + i;
+        String url = "http://localhost:81/TGTOf/web/app_dev.php" + "/store/ApiProduit/prod/" + i;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

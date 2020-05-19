@@ -10,5 +10,5 @@ package com.mycompany.myapp.services.achraf;
  * @author gth
  */
 public class Statics {
-    public static final String BASE_URL="http://localhost:81/tgtOf/web/app_dev.php/api";
+    public static final String BASE_URL="http://localhost:81/TGTOf/web/app_dev.php/api";
 }
