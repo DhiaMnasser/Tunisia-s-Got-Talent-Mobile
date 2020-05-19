@@ -3,28 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.Services;
+package com.mycompany.myapp.services.hassen;
 
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+//import com.codename1.io.Properties;
 import com.codename1.ui.events.ActionListener;
-import com.mycompany.myapp.Entities.Avis.Avis;
-import com.mycompany.myapp.Utils.Statics;
+import com.mycompany.myapp.entities.hassen.Avis;
+import com.mycompany.myapp.utils.hassen.User;
+import com.mycompany.myapp.utils.hassen.UserCourant;
+import com.mycompany.myapp.utils.hassen.Statics1;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 //import java.sql.SQLException;
-import java.util.Calendar;
+
 import java.util.List;
-import java.util.ListIterator;
-import com.codename1.messaging.Message;
+
+//import com.codename1.messaging.Message;
 import com.codename1.ui.Dialog;
-import com.codename1.ui.Display;
+
 import java.util.ArrayList;
+
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import java.util.Properties;
+import static jdk.nashorn.internal.runtime.PropertyMap.diff;
+
 /**
  *
  * @author frauDEee
@@ -57,7 +77,7 @@ public ArrayList<Avis> AvisL;
 //java.util.Date currentDate = calendar.getTime();
        // java.sql.Date date = new java.sql.Date(currentDate.getTime());
        // av.setDate(date);
-        String url = Statics.BASE_URL + "/ApiAvis/new?user_id="+20+"&texte="+av.getTexte();
+        String url = Statics1.BASE_URL + "/ApiAvis/new?user_id="+UserCourant.ok.getId()+"&texte="+av.getTexte();
 //          String url = "";
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -67,9 +87,14 @@ public ArrayList<Avis> AvisL;
                 oneAvis = parseOneAvis(new String(req.getResponseData()));
 
                 req.removeResponseListener(this);
+                sendmail();
                 Dialog.show("Review submitted.", "Thank you for you review", "OK", "Cancel");
                 }
             }
+
+            
+
+           
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         
@@ -91,9 +116,9 @@ public ArrayList<Avis> AvisL;
               av.setId((int) id);
                 
                 av.setTexte((String) obj.get("texte"));
-                av.setUser_id(20);
+                av.setUser_id(1);
              //   av.setDate((Date) );
-           //     Map<String, Object> user = (Map) obj.get("userId");
+             //   Map<String, Object> User = (Map) obj.get("user_id");
 
              //   cmd.setUser_id((int) Float.parseFloat(user.get("id").toString()));
 
@@ -121,7 +146,7 @@ public ArrayList<Avis> AvisL;
     
      public ArrayList<Avis> getAllAvis()
      {
-         String url = Statics.BASE_URL + "/ApiAvis/index";
+         String url = Statics1.BASE_URL + "/ApiAvis/index";
 //          String url = "";
         req.setUrl(url);
         req.setPost(false);
@@ -150,9 +175,9 @@ public ArrayList<Avis> AvisL;
             JSONParser j = new JSONParser();
             Map<String, Object> AvisListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             System.out.println(AvisListJson);
-        //        float id = Float.parseFloat(AvisListJson.get("id").toString());
-           //     av.setId((int) id);
-          //      Map<String, Object> user = (Map) AvisListJson.get("userId");
+            float id = Float.parseFloat(AvisListJson.get("id").toString());
+            av.setId((int) id);
+           // Map<String, Object> User = (Map) AvisListJson.get("userId");
 
 //                av.setUser_id((int) Float.parseFloat(user.get("id").toString()));
 
@@ -160,7 +185,7 @@ public ArrayList<Avis> AvisL;
 
               //  cmd.setIdPanier((int) Float.parseFloat(panier.get("id").toString()));
                 av.setTexte((String) AvisListJson.get("texte"));
-               av.setUser_id(20);
+                av.setUser_id(UserCourant.ok.getId());
                // cmd.setTel((String) CommandesListJson.get("tel"));
                // cmd.setEtat((Boolean) Boolean.parseBoolean(CommandesListJson.get("etat").toString()));
 
@@ -180,6 +205,38 @@ public ArrayList<Avis> AvisL;
         return av;
     }
     
-   
-    
+   public void sendmail() {
+
+      //  String diff = "hassen.benabid@esprit.tn";
+        final String username = "tunisiangt@gmail.com";
+        final String password = "Gamer4ever";
+
+        Properties prop = new Properties();
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+        
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("tunisiangt@gmail.com"));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse("hassen.benabid@esprit.tn")
+            );
+            message.setSubject("Review");
+            message.setText("We received your review! Thank you for helping our community.");
+
+            Transport.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+   }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.Utils;
+package com.mycompany.myapp.utils.hassen;
 
 /**
  *
@@ -15,7 +15,7 @@ public class User {
 
     public User(int id) {
         this.id = id;
-        this.email="esprit.bitdev@gmail.com";
+        this.email="mohameddhia.mnasser@esprit.tn";
     }
 
     public int getId() {
@@ -25,5 +25,14 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     
 }

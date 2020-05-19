@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.gui.Avis;
+package com.mycompany.myapp.gui.hassen;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.FontImage;
@@ -13,8 +13,8 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import com.mycompany.myapp.Entities.Avis.Avis;
-import com.mycompany.myapp.Services.AvisServices;
+import com.mycompany.myapp.entities.hassen.Avis;
+import com.mycompany.myapp.services.hassen.AvisServices;
 
 /**
  *
