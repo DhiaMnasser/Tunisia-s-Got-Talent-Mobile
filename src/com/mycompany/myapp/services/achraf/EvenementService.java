@@ -281,7 +281,7 @@ public class EvenementService {
      Evenement test = new Evenement() ;
      //if(con.getResponseCode() == 200 || con.getResponseCode() == 202) {
     // success code here
-    String Url = "http://localhost:81/TGTOf/web/app_dev.php/test/"+"api/modif"+"?id="+p.getEvent_id()+"&iduser="+p.getId();
+    String Url = "http://localhost:81/TGTOf/web/test/"+"api/modif"+"?id="+p.getEvent_id()+"&iduser="+p.getId();
         con.setUrl(Url);
 
         

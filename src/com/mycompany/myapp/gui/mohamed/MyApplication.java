@@ -21,13 +21,13 @@ import com.codename1.io.NetworkEvent;
 public class MyApplication {
 
     private Form current;
-    public static Resources theme;
+    public static Resources theme=UIManager.initFirstTheme("/theme");
 
     public void init(Object context) {
         // use two network threads instead of one
         updateNetworkThreadCount(2);
 
-        theme = UIManager.initFirstTheme("/theme");
+       // theme = ;
 
         // Enable Toolbar on all Forms by default
         Toolbar.setGlobalToolbar(true);

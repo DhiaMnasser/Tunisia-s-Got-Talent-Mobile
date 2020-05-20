@@ -80,7 +80,7 @@ public class BaseForm extends Form {
 
     protected void addSideMenu(Resources res) {
         Toolbar tb = getToolbar();
-        if(UserCourant.ok.getConfirmation_token().length()==3 || UserCourant.ok.getConfirmation_token()==null ){
+        if(UserCourant.ok.getConfirmation_token().length()==3 ){
         Image img = res.getImage("profile-background.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);

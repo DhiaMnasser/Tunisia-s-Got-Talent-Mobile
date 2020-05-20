@@ -98,7 +98,8 @@ public class UserForm extends com.codename1.ui.Form {
         }
     }
 
-    private void showIfLoggedIn(UserForm form) {
+    private void showIfLoggedIn(UserForm form ) {
+        
         String token = (String) Storage.getInstance().readObject("token");
         FaceBookAccess.setToken(token);
             final User me = new User();
@@ -123,7 +124,9 @@ public class UserForm extends com.codename1.ui.Form {
                             Personne p = new Personne();
                                     p.setUsername(miNombre);
                                     p.setEmail("connected with facebook");
+                                    p.setConfirmation_token("123");
                                     UserCourant.ok=p;
+                                    
                             NewsfeedForm n = new NewsfeedForm(MyApplication.theme);
                             n.show();
                         });
@@ -152,7 +155,7 @@ public class UserForm extends com.codename1.ui.Form {
 
     private void facebookLogout(UserForm form) {
         String clientId = "652517565310972";
-        String redirectURI = "http://localhost/"; //Una URI cualquiera. Si la pones en tu equipo debes crear un Servidor Web. Yo usé XAMPP
+        String redirectURI = "http://localhost:81/"; //Una URI cualquiera. Si la pones en tu equipo debes crear un Servidor Web. Yo usé XAMPP
         String clientSecret = "9154561e811fabe400069718c5ce8e66";
         Login fb = FacebookConnect.getInstance();
         fb.setClientId(clientId);
@@ -169,7 +172,7 @@ public class UserForm extends com.codename1.ui.Form {
         //use your own facebook app identifiers here   
         //These are used for the Oauth2 web login process on the Simulator.
             String clientId = "652517565310972";
-        String redirectURI = "http://localhost/"; //Una URI cualquiera. Si la pones en tu equipo debes crear un Servidor Web. Yo usé XAMPP
+        String redirectURI = "http://localhost:81/"; //Una URI cualquiera. Si la pones en tu equipo debes crear un Servidor Web. Yo usé XAMPP
         String clientSecret = "9154561e811fabe400069718c5ce8e66";
         Login fb = FacebookConnect.getInstance();
         fb.setClientId(clientId);

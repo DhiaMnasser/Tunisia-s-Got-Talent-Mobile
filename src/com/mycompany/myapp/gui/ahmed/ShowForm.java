@@ -63,7 +63,7 @@ public class ShowForm extends BaseForm {
         Label prixP = new Label("Prix : " + p.getPrix_Produit());
         Label sizeP = new Label("Taille : " + p.getTaille_Produit());
 
-        String urlImage = Statics.P_IMAGE_URL + p.getUrl();
+        String urlImage =  p.getUrl();
         Image placeholder = Image.createImage(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight() / 3);
         EncodedImage enco = EncodedImage.createFromImage(placeholder, true);
         Image imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage, URLImage.RESIZE_SCALE);

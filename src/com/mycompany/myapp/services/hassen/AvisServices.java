@@ -73,7 +73,8 @@ public ArrayList<Avis> AvisL;
                 oneAvis = parseOneAvis(new String(req.getResponseData()));
 
                 req.removeResponseListener(this);
-                sendmail();
+                sendmail(UserCourant.ok.getEmail());
+                
                 Dialog.show("Review submitted.", "Thank you for you review", "OK", "Cancel");
                 }
             }
@@ -183,7 +184,7 @@ public ArrayList<Avis> AvisL;
         return av;
     }
     
-   public void sendmail() {
+   public void sendmail(String nom) {
 
       //  String diff = "hassen.benabid@esprit.tn";
         final String username = "tunisiangt@gmail.com";
@@ -207,7 +208,7 @@ public ArrayList<Avis> AvisL;
             message.setFrom(new InternetAddress("tunisiangt@gmail.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
-                    InternetAddress.parse("hassen.benabid@esprit.tn")
+                    InternetAddress.parse(nom)
             );
             message.setSubject("Review");
             message.setText("We received your review! Thank you for helping our community.");

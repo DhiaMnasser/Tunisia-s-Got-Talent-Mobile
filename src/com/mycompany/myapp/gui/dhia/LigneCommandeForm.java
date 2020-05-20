@@ -61,19 +61,21 @@ public class LigneCommandeForm extends BaseForm {
 //        TODO replace url
 //        String urlImage = Statics.IMAGE_URL + "/dev-img.jpg";
             Produit p = ServiceProduct.getInstance().getOProducts(lc.getIdproduit());
-            String urlImage = Statics.P_IMAGE_URL+p.getUrl();
-        Image placeholder = Image.createImage(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight() / 3);
+            String urlImage = p.getUrl();
+        Image placeholder = Image.createImage(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight() );
         EncodedImage enco = EncodedImage.createFromImage(placeholder, true);
 //        TODO
             URLImage imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage);
 //        URLImage imgser = URLImage.createToStorage(enco, "" + "dev-img.jpg", urlImage);
         ImageViewer img = new ImageViewer(imgser);
-        img.setWidth(500);
+        img.setWidth(900);
         SpanLabel nomProduit = new SpanLabel(lc.getNomProduit());
         FontImage.setMaterialIcon(nomProduit, FontImage.MATERIAL_LABEL_IMPORTANT, 6);
 
+        
+        
         nomProduit.getAllStyles().setAlignment(CENTER);
-        TextField quantite = new TextField(lc.getQuantite());
+       TextField quantite = new TextField(lc.getQuantite());
         quantite.setHint("Quantite :" + lc.getQuantite());
 
 //            TODO replace the product price 

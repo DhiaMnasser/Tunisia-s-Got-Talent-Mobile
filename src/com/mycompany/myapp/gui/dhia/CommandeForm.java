@@ -112,7 +112,7 @@ public class CommandeForm extends BaseForm {
 
 //        TODO
 //            String urlImage = Statics.IMAGE_URL + "/prd3.jpg";
-            String urlImage = Statics.P_IMAGE_URL+p.getUrl();
+            String urlImage = p.getUrl();
             EncodedImage enco = EncodedImage.createFromImage(res.getImage("icon.png"), false);
             URLImage imgser = URLImage.createToStorage(enco, "" + p.getUrl(), urlImage);
 //            URLImage imgser = URLImage.createToStorage(enco, "" + "prd3.jpg", urlImage);

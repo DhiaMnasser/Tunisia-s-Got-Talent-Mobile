@@ -62,7 +62,7 @@ public class NewsfeedForm extends BaseForm {
         setTitle("Welcome-Bienvenue");
         getContentPane().setScrollVisible(false);
         
-        super.addSideMenu(res);
+       super.addSideMenu(res);
         tb.addSearchCommand(e -> {});
         
         Tabs swipe = new Tabs();
