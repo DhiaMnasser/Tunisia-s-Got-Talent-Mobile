@@ -1,8 +1,14 @@
 package com.mycompany.myapp.services.gth;
 
 import com.codename1.io.*;
+import com.codename1.ui.Button;
+import com.codename1.ui.Container;
+import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionListener;
-import com.gthcompagny.myapp.entities.gth.Upload;
+import com.codename1.ui.layouts.BoxLayout;
+import com.mycompany.myapp.entities.gth.Upload;
+import com.mycompany.myapp.gui.gth.LecteurForm;
+import com.mycompany.myapp.services.mohamed.UserCourant;
 import com.mycompany.myapp.utils.gth.Statics;
 
 import java.io.IOException;
@@ -48,14 +54,17 @@ public class ServiceUpload {
             u.setAuteur(obj.get("author").toString());
             u.setSource(obj.get("videoFile").toString());
             u.setCategorie(obj.get("categorie").toString());
+            u.setVote(((int)Float.parseFloat(obj.get("nbrVote").toString())));
             u.setEvenement("");
             uploads.add(u);
         }
         return uploads;
     }
+    
+    
 
     public boolean vote(int id){
-        String url= Statics.BASE_URL+"/publication/api/vote/"+id;
+        String url= Statics.BASE_URL+"/publication/api/vote/"+id+"/"+UserCourant.ok.getId();
         ConnectionRequest req= new ConnectionRequest(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -102,6 +111,18 @@ public class ServiceUpload {
         NetworkManager.getInstance().addToQueueAndWait(req);
 
         return uploads;
+    }
+    
+    public boolean dejaUpload(){
+        boolean du=false;
+        
+        ArrayList<Upload> uploads=ServiceUpload.getInstance().getAllUploads();
+        for(Upload u:uploads){
+            if(u.getAuteur().equals(UserCourant.ok.getUsername())){
+                du=true;
+            }
+        }
+        return du;
     }
 
 

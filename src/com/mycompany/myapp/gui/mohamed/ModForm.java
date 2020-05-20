@@ -5,6 +5,13 @@
  */
 package com.mycompany.myapp.gui.mohamed;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import com.codename1.capture.Capture;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.CheckBox;
@@ -16,6 +23,8 @@ import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
@@ -27,12 +36,15 @@ import com.mycompany.myapp.entities.mohamed.Personne;
 import com.mycompany.myapp.services.mohamed.PersonneService;
 import com.mycompany.myapp.services.mohamed.Recherche;
 import com.mycompany.myapp.services.mohamed.UserCourant;
+import java.io.IOException;
 
 /**
  *
  * @author mohamed khrouf
  */
 public class ModForm extends BaseForm{
+    private Label pic;
+    String imgPath;
    public ModForm(Resources res) {
         super("Newsfeed", BoxLayout.y());
         Toolbar tb = new Toolbar(true);
@@ -45,7 +57,7 @@ public class ModForm extends BaseForm{
         
         tb.addSearchCommand(e -> {});
         
-        
+ if (UserCourant.ok.getConfirmation_token().length()==3){
         Image img = res.getImage("profile-background.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
@@ -53,24 +65,92 @@ public class ModForm extends BaseForm{
         ScaleImageLabel sl = new ScaleImageLabel(img);
         sl.setUIID("BottomPad");
         sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
-
+       try{
+         pic= new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond");
+  
+ pic.addPointerReleasedListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                  try {
+                         imgPath = Capture.capturePhoto(Display.getInstance().getDisplayWidth(), -1);
+                        System.out.println(imgPath);
+                        Image oui = Image.createImage(imgPath);                      
+                          pic= new Label(oui.scaled(200,200 ), "PictureWhiteBackgrond");
+                           
+                    } catch (IOException ex) {
+                        System.out.println(ex);
+                    }
+                }
+                
+            });
         Label facebook = new Label("786 followers", res.getImage("facebook-logo.png"), "BottomPad");
         Label twitter = new Label("486 followers", res.getImage("twitter-logo.png"), "BottomPad");
         facebook.setTextPosition(BOTTOM);
         twitter.setTextPosition(BOTTOM);
         
-        add(LayeredLayout.encloseIn(
-                sl,
-                BorderLayout.south(
-                    GridLayout.encloseIn(3, 
-                            facebook,
-                            FlowLayout.encloseCenter(
-                                new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond")),
-                            twitter
-                    )
-                )
-        ));
+      
+           add(LayeredLayout.encloseIn(
+                   sl,
+                   BorderLayout.south(
+                           GridLayout.encloseIn(3,
+                                   facebook,
+                                   FlowLayout.encloseCenter(
+                                        pic ),
+                                   twitter
+                           )
+                   )
+           ));
+       }catch(Exception ex){
+           
+       }
 
+ }else{
+       Image img = res.getImage("profile-background.jpg");
+        if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
+            img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
+        }
+        ScaleImageLabel sl = new ScaleImageLabel(img);
+        sl.setUIID("BottomPad");
+        sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
+       try{
+           pic=  new Label(Image.createImage(UserCourant.ok.getConfirmation_token()).scaled(200,200 ), "PictureWhiteBackgrond");
+  
+ pic.addPointerReleasedListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                  try {
+                         imgPath = Capture.capturePhoto(Display.getInstance().getDisplayWidth(), -1);
+                        System.out.println(imgPath);
+                        Image oui = Image.createImage(imgPath);                      
+                          pic= new Label(oui.scaled(200,200 ), "PictureWhiteBackgrond");
+                           
+                    } catch (IOException ex) {
+                        System.out.println(ex);
+                    }
+                }
+                
+            });
+        Label facebook = new Label("786 followers", res.getImage("facebook-logo.png"), "BottomPad");
+        Label twitter = new Label("486 followers", res.getImage("twitter-logo.png"), "BottomPad");
+        facebook.setTextPosition(BOTTOM);
+        twitter.setTextPosition(BOTTOM);
+        
+      
+           add(LayeredLayout.encloseIn(
+                   sl,
+                   BorderLayout.south(
+                           GridLayout.encloseIn(3,
+                                   facebook,
+                                   FlowLayout.encloseCenter(
+                                        pic ),
+                                   twitter
+                           )
+                   )
+           ));
+       }catch(Exception ex){
+           
+       }
+ }
         TextField username = new TextField(UserCourant.ok.getUsername());
         username.setUIID("TextFieldBlack");
         addStringValue("Username", username);
@@ -79,7 +159,7 @@ public class ModForm extends BaseForm{
         email.setUIID("TextFieldBlack");
         addStringValue("E-Mail", email);
         
-        TextField password = new TextField("sandeep", "Password", 20, TextField.PASSWORD);
+        TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
         password.setUIID("TextFieldBlack");
         addStringValue("Password", password);
         
@@ -96,22 +176,28 @@ public class ModForm extends BaseForm{
        b.addActionListener(e->{
            Personne p = new Personne(username.getText(),email.getText(),password.getText());
                    PersonneService ps= new PersonneService();
-            ps.getPersonne(username.getText(), password.getText());
+            ps.getPersonne(username.getText(), email.getText());
            p.setId(UserCourant.ok.getId());
+           p.setConfirmation_token(imgPath);
+          
             if(!(Recherche.mail) && !(Recherche.name)){
+                
                    ps.modPersonne(p);
                    UserCourant.ok=p;
                 
                 }
+           
                 if(Recherche.mail){
                     Dialog.show("email existe", "saisir un autre email "  , "OK", null);
                     Recherche.mail=false;
                 }
+           
+               
                 if(Recherche.name){
                     Dialog.show("username existe", "saisir un autre username "  , "OK", null);
                      Recherche.name=false;
                 }
-             
+              
        
        });
     }

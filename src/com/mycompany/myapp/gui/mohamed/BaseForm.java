@@ -21,6 +21,7 @@ package com.mycompany.myapp.gui.mohamed;
 
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Component;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -38,8 +39,11 @@ import com.mycompany.myapp.gui.ahmed.HomeForm;
 import com.mycompany.myapp.gui.dhia.ListCommandesForm;
 import com.mycompany.myapp.gui.dhia.PanierForm;
 import com.mycompany.myapp.gui.gth.AddPubForm;
+import com.mycompany.myapp.gui.hassen.ListeAvisForm;
+import com.mycompany.myapp.services.gth.ServiceUpload;
 import com.mycompany.myapp.services.mohamed.Recherche;
 import com.mycompany.myapp.services.mohamed.UserCourant;
+import java.io.IOException;
 
 /**
  * Base class for the forms with common functionality
@@ -76,11 +80,14 @@ public class BaseForm extends Form {
 
     protected void addSideMenu(Resources res) {
         Toolbar tb = getToolbar();
+        if(UserCourant.ok.getConfirmation_token().length()==3 || UserCourant.ok.getConfirmation_token()==null ){
         Image img = res.getImage("profile-background.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
+        
         ScaleImageLabel sl = new ScaleImageLabel(img);
+        
         sl.setUIID("BottomPad");
         sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
         
@@ -89,17 +96,44 @@ public class BaseForm extends Form {
                 FlowLayout.encloseCenterBottom(
                         new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond"))
         ));
+        }else{
+            Image img = res.getImage("profile-background.jpg");
+        if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
+            img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
+        }
+        
+        ScaleImageLabel sl = new ScaleImageLabel(img);
+        
+        sl.setUIID("BottomPad");
+        sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
+        
+            try {
+                tb.addComponentToSideMenu(LayeredLayout.encloseIn(
+                        sl,
+                        FlowLayout.encloseCenterBottom(
+                                new Label(Image.createImage(UserCourant.ok.getConfirmation_token()).scaled(200,200 ), "PictureWhiteBackgrond")
+                        )));} catch (IOException ex) {
+                
+            }
+        }
         
         tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> new ProfileForm(res).show());
         tb.addMaterialCommandToSideMenu("edit profile", FontImage.MATERIAL_SETTINGS, e -> new ModForm(res).show());
         tb.addMaterialCommandToSideMenu("Evenements", FontImage.MATERIAL_PLACE, e -> new EvenementForm(res).show());
-        tb.addMaterialCommandToSideMenu("Ajouter une Publication", FontImage.MATERIAL_ADD_TO_PHOTOS, e -> new AddPubForm(res).show());
+        tb.addMaterialCommandToSideMenu("Ajouter une Publication", FontImage.MATERIAL_ADD_TO_PHOTOS, (e) ->{ 
+            if(ServiceUpload.getInstance().dejaUpload()){
+                Dialog.show("Alert","Votre Video existe deja","Ok",null);
+            }else{
+                new AddPubForm(res).show();
+            }
+        });
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_PERSON, e -> new ProfileForm(res).show());
         tb.addMaterialCommandToSideMenu("Store", FontImage.MATERIAL_EXIT_TO_APP, e -> new HomeForm(res).show());
         tb.addMaterialCommandToSideMenu("Panier", FontImage.MATERIAL_SHOPPING_CART, e -> new PanierForm(res).show());
         tb.addMaterialCommandToSideMenu("Commande", FontImage.MATERIAL_PAGES, e -> new ListCommandesForm(res).show());
         tb.addMaterialCommandToSideMenu("Régions", FontImage.MATERIAL_PLACE, e -> new  RegionForm(res).show());
+        tb.addMaterialCommandToSideMenu("Avis", FontImage.MATERIAL_FEEDBACK, e -> new  ListeAvisForm(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             UserCourant.ok=null;
              Recherche.username=false;

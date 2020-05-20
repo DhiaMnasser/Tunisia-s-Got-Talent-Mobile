@@ -1,4 +1,4 @@
-package com.gthcompagny.myapp.entities.gth;
+package com.mycompany.myapp.entities.gth;
 
 public class Upload {
     private int id;
@@ -8,6 +8,7 @@ public class Upload {
     private String auteur;
     private String source;
     private String evenement;
+    private int vote;
 
 
     public Upload(int id, String titre, String auteur,String categorie, String source) {
@@ -94,7 +95,17 @@ public class Upload {
         this.evenement = evenement;
     }
 
-    @Override
+    public int getVote() {
+        return vote;
+    }
+
+    public void setVote(int vote) {
+        this.vote = vote;
+    }
+    
+    
+
+    /*@Override
     public String toString() {
         return "Upload{" +
                 "id=" + id +
@@ -105,5 +116,18 @@ public class Upload {
                 ", source='" + source + '\'' +
                 ", evenement='" + evenement + '\'' +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "Upload{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", categorie=" + categorie + ", auteur=" + auteur + ", source=" + source + ", evenement=" + evenement + ", vote=" + vote + '}';
     }
+
+    
+    
+    
+
+    
+    
+    
 }

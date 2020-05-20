@@ -12,6 +12,7 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.gui.mohamed.NewsfeedForm;
 import com.mycompany.myapp.services.gth.ServiceUpload;
+import com.mycompany.myapp.services.gth.ServiceVote;
 import com.mycompany.myapp.services.mohamed.UserCourant;
 
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class LecteurForm extends Form {
         Container ctnBt=new Container(BoxLayout.x());
         setTitle("Lecteur");
         setLayout(new BorderLayout());
-        //setUIID("SignIn");
+        setUIID("SignIn");
 
         setToolbar(new Toolbar());
         Style s = UIManager.getInstance().getComponentStyle("Title");
@@ -38,6 +39,8 @@ public class LecteurForm extends Form {
                 MediaPlayer m=new MediaPlayer(video);
                 m.setAutoplay(true);
                 m.showControls();
+                m.setMaximize(true);
+                m.setUIID("SignIn");
                 add(BorderLayout.CENTER, m);
                 revalidate();
             } catch(IOException err) {
@@ -46,11 +49,14 @@ public class LecteurForm extends Form {
         }
 
         add(BorderLayout.NORTH, new Label(res.getImage("tgt300.png"), "LogoLabel"));
+        System.out.println(ServiceVote.getInstance().dejaVote1(UserCourant.ok.getId()));
+        if(!(ServiceVote.getInstance().dejaVote1(UserCourant.ok.getId()))){
         getToolbar().addCommandToOverflowMenu("Voter",null,evt -> {
            ServiceUpload.getInstance().vote(id);
            if(ServiceUpload.getInstance().vote(id))
            Dialog.show("Succes","Vote Effectué","Ok",null);
         });
+        }
 
         
         if(UserCourant.ok.getJury()==1){

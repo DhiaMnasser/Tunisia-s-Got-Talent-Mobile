@@ -8,7 +8,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
-import com.gthcompagny.myapp.entities.gth.Upload;
+import com.mycompany.myapp.entities.gth.Upload;
 import com.mycompany.myapp.services.gth.ServiceUpload;
 
 import java.util.ArrayList;

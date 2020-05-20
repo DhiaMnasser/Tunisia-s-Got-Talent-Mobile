@@ -180,6 +180,7 @@ public class PersonneService {
                                 userkh.setEmail((String) obj.get("email"));
                                  userkh.setEmail_canonical((String) obj.get("email"));
                              userkh.setPassword((String) obj.get("password"));
+                              userkh.setConfirmation_token((String) obj.get("confirmationToken"));
                              System.out.println(obj.get("jury"));
                              if(obj.get("jury").equals("true")){
                                  userkh.setJury(1);
@@ -204,6 +205,7 @@ public class PersonneService {
                       Personne p =new Personne(obj.getUsername(),obj.getEmail(),obj.getPassword());
                       p.setPassword(obj.getPassword());
                       p.setId(obj.getId());
+                      p.setConfirmation_token(obj.getConfirmation_token());
                       System.out.println(obj.getId());
                       p.setEnabled(obj.getEnabled());
                       
@@ -241,6 +243,7 @@ public class PersonneService {
                                 userkh.setEmail((String) obj.get("email"));
                                  userkh.setEmail_canonical((String) obj.get("email"));
                              userkh.setPassword((String) obj.get("password"));
+                               userkh.setConfirmation_token((String) obj.get("confirmationToken"));
                        if(obj.get("jury").equals("true")){
                                  userkh.setJury(1);
                              }else{
@@ -264,6 +267,7 @@ public class PersonneService {
                       p.setPassword(obj.getPassword());
                       p.setId(obj.getId());
                       p.setEnabled(obj.getEnabled());
+                      p.setConfirmation_token(obj.getConfirmation_token());
                       
                       UserCourant.ok=p;
                     }
@@ -298,6 +302,7 @@ public class PersonneService {
                                 userkh.setEmail((String) obj.get("email"));
                                  userkh.setEmail_canonical((String) obj.get("email"));
                              userkh.setPassword((String) obj.get("password"));
+                               userkh.setConfirmation_token((String) obj.get("confirmationToken"));
                       if(obj.get("jury").equals("true")){
                                  userkh.setJury(1);
                              }else{

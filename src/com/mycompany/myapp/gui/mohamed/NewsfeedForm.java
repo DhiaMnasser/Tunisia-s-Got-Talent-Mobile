@@ -42,7 +42,7 @@ import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
-import com.gthcompagny.myapp.entities.gth.Upload;
+import com.mycompany.myapp.entities.gth.Upload;
 import com.mycompany.myapp.gui.gth.LecteurForm;
 import com.mycompany.myapp.services.gth.ServiceUpload;
 import java.util.ArrayList;
@@ -69,8 +69,7 @@ public class NewsfeedForm extends BaseForm {
 
         Label spacer1 = new Label();
         Label spacer2 = new Label();
-        addTab(swipe, res.getImage("news-item.jpg"), spacer1, "15 Likes  ", "85 Comments", "Tunisian Got Talent The Best Round ");
-        addTab(swipe, res.getImage("dog.jpg"), spacer2, "100 Likes  ", "66 Comments", "Dogs are cute: story at 11");
+        addTab(swipe, res.getImage("accueil.png"), spacer1, "", "", " ");
                 
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
@@ -146,7 +145,7 @@ public class NewsfeedForm extends BaseForm {
         
         ArrayList<Upload> uploads=ServiceUpload.getInstance().getAllUploads();
         for(Upload u:uploads){
-            addButton(res.getImage("video.png"), u.getDescription(), false, u.getAuteur(), u.getCategorie(),u,res);
+            addButton(res.getImage("video.png"), u.getDescription(), true, u.getAuteur(), u.getCategorie(),u,res,u.getVote());
         }
     }
     
@@ -195,7 +194,7 @@ public class NewsfeedForm extends BaseForm {
         swipe.addTab("", page1);
     }
     
-   private void addButton(Image img, String title, boolean liked, String auteur, String categorie,Upload u,Resources res) {
+   private void addButton(Image img, String title, boolean liked, String auteur, String categorie,Upload u,Resources res,int vote) {
        
        int height = Display.getInstance().convertToPixels(11.5f);
        int width = Display.getInstance().convertToPixels(14f);
@@ -207,24 +206,26 @@ public class NewsfeedForm extends BaseForm {
        ta.setUIID("NewsTopLine");
        ta.setEditable(false);
 
-       Label likes = new Label( " Auteur  "+auteur , "NewsBottomLine");
-       likes.setTextPosition(RIGHT);
+       Label lauteur = new Label( " Auteur  "+auteur , "NewsBottomLine");
+       lauteur.setTextPosition(RIGHT);
+       Label llikes = new Label( " Vote  "+vote , "NewsBottomLine");
+       llikes.setTextPosition(RIGHT);
        if(!liked) {
-           FontImage.setMaterialIcon(likes, FontImage.MATERIAL_FAVORITE);
+           FontImage.setMaterialIcon(lauteur, FontImage.MATERIAL_FAVORITE);
        } else {
-           Style s = new Style(likes.getUnselectedStyle());
+           Style s = new Style(lauteur.getUnselectedStyle());
            s.setFgColor(0xff2d55);
            FontImage heartImage = FontImage.createMaterial(FontImage.MATERIAL_FAVORITE, s);
-           likes.setIcon(heartImage);
+           lauteur.setIcon(heartImage);
        }
        Label comments = new Label(" Categorie "+ categorie  , "NewsBottomLine");
-       FontImage.setMaterialIcon(likes, FontImage.MATERIAL_CHAT);
+       FontImage.setMaterialIcon(lauteur, FontImage.MATERIAL_CHAT);
        
        
        cnt.add(BorderLayout.CENTER, 
                BoxLayout.encloseY(
                        ta,
-                       BoxLayout.encloseX(likes, comments)
+                       BoxLayout.encloseX(lauteur, comments,llikes)
                ));
        add(cnt);
        

@@ -14,7 +14,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
-import com.gthcompagny.myapp.entities.gth.Upload;
+import com.mycompany.myapp.entities.gth.Upload;
 import com.mycompany.myapp.gui.mohamed.BaseForm;
 import com.mycompany.myapp.gui.mohamed.NewsfeedForm;
 import com.mycompany.myapp.services.gth.ServiceUpload;
@@ -109,6 +109,7 @@ public class AddPubForm extends BaseForm {
         //tgt300.png
         add(BorderLayout.NORTH, new Label(res.getImage("tgt300.png"), "LogoLabel"));
         add(BorderLayout.CENTER,cnt);
+        
         add(BorderLayout.SOUTH,btnValider);
 
 
